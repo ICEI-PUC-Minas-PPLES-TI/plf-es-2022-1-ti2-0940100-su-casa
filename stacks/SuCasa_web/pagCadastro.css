@@ -14,7 +14,7 @@ h1{
     float: right;
     display: flex;
     flex-direction: column;
-    background-color: #9b5b7d;
+    background-color: #f4e9ed;
     width: 60%;
     justify-content: space-around;
     align-items: center;
@@ -31,7 +31,7 @@ h1{
 
 /* CADASTRO CSS*/
 .cadastro{
-    background-color: #f4e9ed;
+    background-color: #9b5b7d;
     width: 40%;
     display: flex;
     flex-direction: column;
@@ -67,10 +67,16 @@ form label, form legend{
     display: flex;
 }
 
+.enviar:hover {
+    cursor: pointer;
+    background-color: #e2d0d6;
+    color: #8b4869;
+}
+
 .enviar{
 	padding: 15px 20px;
-	background: #9b5b7d;
-	color: #f4e9ed;
+	background: #f4e9ed;
+	color: #9b5b7d;
 	font-weight: bold;
 	font-size: 20px;
 	border: none;
