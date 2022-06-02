@@ -6,6 +6,7 @@ import { User } from 'src/user/entities/user.entity';
 import { UserPayload } from './models/UserPayload';
 import { JwtService } from '@nestjs/jwt';
 import { UserToken } from './models/UserToken';
+
 @Injectable()
 export class AuthService {
   constructor(

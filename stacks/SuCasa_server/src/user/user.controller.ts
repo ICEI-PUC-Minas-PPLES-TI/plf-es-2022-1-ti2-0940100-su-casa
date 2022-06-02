@@ -17,9 +17,4 @@ export class UserController {
   showIsRunning() {
     return this.userService.isRunning();
   }
-
-  @Get('profile')
-  getUserId(@Request() req: any) {
-    return this.userService.get(req);
-  }
 }
