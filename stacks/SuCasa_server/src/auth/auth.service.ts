@@ -6,7 +6,6 @@ import { User } from 'src/user/entities/user.entity';
 import { UserPayload } from './models/UserPayload';
 import { JwtService } from '@nestjs/jwt';
 import { UserToken } from './models/UserToken';
-
 @Injectable()
 export class AuthService {
   constructor(
@@ -28,7 +27,7 @@ export class AuthService {
     };
   }
 
-  async validateUser(email: string, password: string): Promise<any> {
+  async validateUser(email: string, password: string) {
     const user = await this.userService.findByEmail(email);
 
     if (user) {
