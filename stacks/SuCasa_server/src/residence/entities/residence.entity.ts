@@ -1,6 +1,8 @@
+import { User } from '../../user/entities/user.entity';
+
 export class Residence {
   id?: string;
-  ownerId: string;
+  owner?: User;
   cep: string;
   estado: string;
   cidade: string;
