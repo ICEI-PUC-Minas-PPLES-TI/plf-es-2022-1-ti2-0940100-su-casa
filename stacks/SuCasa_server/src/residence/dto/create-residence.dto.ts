@@ -1,6 +1,5 @@
 import { Residence } from '../entities/residence.entity';
 import { IsNumber, IsObject, IsString } from 'class-validator';
-import {User} from "../../user/entities/user.entity";
 
 export class CreateResidenceDto extends Residence {
   @IsString()
@@ -34,5 +33,5 @@ export class CreateResidenceDto extends Residence {
   availability: string;
 
   @IsObject()
-  owner: User;
+  ownerId: string;
 }
