@@ -27,7 +27,7 @@ export class AuthService {
     };
   }
 
-  async validateUser(email: string, password: string) {
+  async validateUser(email: string, password: string): Promise<any> {
     const user = await this.userService.findByEmail(email);
 
     if (user) {
@@ -43,5 +43,9 @@ export class AuthService {
     throw new UnauthorizedError(
       'Email address or password provided is incorrect',
     );
+  }
+
+  get(user: User) {
+    return user.id;
   }
 }

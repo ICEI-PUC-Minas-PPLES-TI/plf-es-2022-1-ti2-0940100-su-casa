@@ -2,6 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import * as bcrypt from 'bcrypt';
+
+export type User = any;
+
 @Injectable()
 export class UserService {
   isRunning() {
@@ -25,5 +28,12 @@ export class UserService {
 
   findByEmail(email: string) {
     return this.prisma.user.findUnique({ where: { email } });
+  }
+
+  get(req: any) {
+    return {
+      ...req.user,
+      password: undefined,
+    };
   }
 }

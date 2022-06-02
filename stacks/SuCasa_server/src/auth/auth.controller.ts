@@ -1,5 +1,6 @@
 import {
   Controller,
+  Get,
   HttpCode,
   HttpStatus,
   Post,
@@ -21,5 +22,11 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   async login(@Request() req: AuthRequest) {
     return this.authService.login(req.user);
+  }
+
+  @UseGuards(LocalAuthGuard)
+  @Get('profile')
+  getUser(@Request() req: any) {
+    return this.authService.get(req.user);
   }
 }
