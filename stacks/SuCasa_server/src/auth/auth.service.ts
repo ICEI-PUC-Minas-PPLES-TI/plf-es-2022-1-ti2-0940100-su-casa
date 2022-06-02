@@ -44,8 +44,4 @@ export class AuthService {
       'Email address or password provided is incorrect',
     );
   }
-
-  get(user: User) {
-    return user.id;
-  }
 }

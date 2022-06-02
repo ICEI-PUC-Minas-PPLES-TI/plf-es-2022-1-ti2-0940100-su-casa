@@ -23,10 +23,4 @@ export class AuthController {
   async login(@Request() req: AuthRequest) {
     return this.authService.login(req.user);
   }
-
-  @UseGuards(LocalAuthGuard)
-  @Get('profile')
-  getUser(@Request() req: any) {
-    return this.authService.get(req.user);
-  }
 }
