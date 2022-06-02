@@ -10,6 +10,7 @@ export class ResidenceService {
 
   async create(createResidenceDto: CreateResidenceDto) {
     const data = createResidenceDto;
+
     const createdResidence = await this.prisma.residence.create({ data });
 
     return createdResidence;
