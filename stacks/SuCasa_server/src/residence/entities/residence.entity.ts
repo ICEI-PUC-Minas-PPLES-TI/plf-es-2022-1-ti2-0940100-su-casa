@@ -1,9 +1,14 @@
 export class Residence {
   id?: string;
+  owner: object;
   cep: string;
   estado: string;
   cidade: string;
-  endereco: string;
   rua: string;
   numero: string;
+  bairro: string;
+  numCapacity: number;
+  tamLocal: number;
+  numToilet: number;
+  availability: string;
 }
