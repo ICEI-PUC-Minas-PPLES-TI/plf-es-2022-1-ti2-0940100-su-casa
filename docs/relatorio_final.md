@@ -271,14 +271,14 @@ Apresente o modelo de dados por meio de um modelo relacional ou Diagrama de Enti
 ## 6. Indicadores de desempenho
 
 Abaixo os 5 indicadores definidos.
-
 | **Indicador** | **Objetivos** | **Descrição** | **Cálculo** | **Fonte dados** | **Perspectiva** |
 | --- | --- | --- | --- | --- | --- |
 | Taxa de Satisfação | Avaliar quantitativamente a satisfação dos usuários | Mede a quantidade média de avaliações | Média das avaliações totais   | Tabela de Avaliações | Feedback e melhorias |
-| Número de conversão | Avaliar quantitativamente a taxa de conversão de clientes | Mede a quantidade de visitas que realizaram a locação do local | Quantidade de locações dividido pela quantidade de visitas | Dados do servidor e dados da Tabela de Eventos | Melhorias e crescimento |
+| Taxa de utilização do staff | Avaliar quantitativamente o percentual do uso dos staffs nos eventos | Mede a média da quantidade de uso de staffs nos evento | Número de utilização do staff * 100. Dividir o resultado da multiplicação (número de utilização de staff * 100) pelo número de eventos e armazenar o resultado em uma variável X (porcentagem)  | Tabela eventos | Feedback |
 | Taxa de cancelamento | Avaliar quantitativamente a taxa de cancelamento de eventos já agendados | Mede a quantidade de eventos cancelados no mês | Quantidade de eventos cancelados dividido pela quantidade de eventos realizados no mês  | Tabela de Eventos | Aprendizado e previsão |
 | Taxa de Recorrência | Avaliar quantitativamente a proporção de usuários que locaram o espaço mais de uma vez | Mede a quantidade de usuários recorrentes | Total de usuários que alugaram mais de uma vez o espaço dividido pelo total de usuários que já alugaram pelo menos uma vez | Tabela de Usuários e Eventos | Clientes |
-| Taxa de Desinteresse | Avaliar quantitativamente a proporção de usuários que nunca locaram o espaço | Mede a quantidade de usuários que possuem cadastro mas nunca alugaram o espaço | Total de usuários que nunca alugaram o espaço dividido pelo total de usuários cadastradados | Tabela de Usuários e Eventos | Clientes |
+| Taxa de Desinteresse | Avaliar quantitativamente a proporção de usuários que nunca locaram o espaço | Mede a quantidade de usuários que possuem cadastro mas nunca alugaram o espaço | Total de usuários que nunca alugaram o espaço dividido pelo total de usuários cadastrados | Tabela de Usuários e Eventos | Clientes |
+
 
 
 Obs.: todas as informações para gerar os indicadores devem estar no diagrama de classe **a ser proposto**
