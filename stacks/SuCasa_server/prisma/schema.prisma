@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String     @id @default(uuid())
+  email    String     @unique
+  name     String
+  password String
+  phone    String
+  role     Role
+  event    Event[]
+  residence Residence[]
+}
+
+model Residence {
+  id           String       @id @default(uuid())
+  description  String?
+  cep          String
+  estado       String
+  cidade       String
+  rua          String
+  numero       String
+  bairro       String
+  numCapacity  Int
+  tamLocal     Int
+  numToilet    Int
+  availability String
+  ownerId      String
+  price        Int?
+  owner        User?         @relation(fields: [ownerId], references: [id])
+  evaluation   Evaluation[]
+  event        Event[]
+}
+
+model Staff {
+  id         String  @id @default(uuid())
+  name       String  @unique
+  numWorkers Int?
+  price      Int
+  event      Event[]
+}
+
+model Event {
+  id         String      @id @default(uuid())
+  duration   Int
+  numGuests  Int
+  payment    Payment
+  assignedAt DateTime
+  promoterId String
+  propertyId String
+  promoter   User        @relation(fields: [promoterId], references: [id])
+  residence  Residence    @relation(fields: [propertyId], references: [id])
+  evaluation Evaluation?
+  staff      Staff[]
+}
+
+model Evaluation {
+  id         String   @id @default(uuid())
+  eventId    String   @unique
+  propertyId String
+  grade      Int
+  event      Event     @relation(fields: [eventId], references: [id])
+  residence  Residence @relation(fields: [propertyId], references: [id])
+}
+
+enum Role {
+  OWNER
+  PROMOTER
+  STAFF
+}
+
+enum Payment {
+  DEBIT
+  CREDIT
+  PIX
+  TICKET
+  IN_CASH
+}
