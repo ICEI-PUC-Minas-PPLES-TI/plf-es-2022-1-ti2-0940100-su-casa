@@ -8,18 +8,19 @@ datasource db {
 }
 
 model User {
-  id       String     @id @default(uuid())
-  email    String     @unique
-  name     String
-  password String
-  phone    String
-  role     Role
-  event    Event[]
+  id        String     @id @default(uuid())
+  email     String     @unique
+  name      String
+  password  String
+  phone     String
+  role      Role
+  event     Event[]
   residence Residence[]
+  staff     Staff[]
 }
 
 model Residence {
-  id           String       @id @default(uuid())
+  id           String     @id @default(uuid())
   description  String?
   cep          String
   estado       String
@@ -33,31 +34,34 @@ model Residence {
   availability String
   ownerId      String
   price        Int?
-  owner        User?         @relation(fields: [ownerId], references: [id])
+  owner        User         @relation(fields: [ownerId], references: [id])
   evaluation   Evaluation[]
   event        Event[]
 }
 
 model Staff {
-  id         String  @id @default(uuid())
-  name       String  @unique
-  numWorkers Int?
-  price      Int
-  event      Event[]
+  id            String  @id @default(uuid())
+  whatsapp      String?
+  minConvidados Int
+  maxConvidados Int
+  price         Int
+  description   String
+  userStaffId   String
+  userStaff     User        @relation(fields: [userStaffId], references: [id])
+  event         Event[]
 }
 
 model Event {
-  id         String      @id @default(uuid())
-  duration   Int
-  numGuests  Int
-  payment    Payment
-  assignedAt DateTime
-  promoterId String
-  propertyId String
-  promoter   User        @relation(fields: [promoterId], references: [id])
-  residence  Residence    @relation(fields: [propertyId], references: [id])
-  evaluation Evaluation?
-  staff      Staff[]
+  id            String      @id @default(uuid())
+  duration      Int
+  numGuests     Int
+  assignedAt    String
+  promoterId    String
+  residenceId   String
+  staffId       String
+  promoter      User        @relation(fields: [promoterId], references: [id])
+  residence     Residence   @relation(fields: [residenceId], references: [id])
+  staff         Staff       @relation(fields: [staffId], references: [id])
 }
 
 model Evaluation {
@@ -65,7 +69,6 @@ model Evaluation {
   eventId    String   @unique
   propertyId String
   grade      Int
-  event      Event     @relation(fields: [eventId], references: [id])
   residence  Residence @relation(fields: [propertyId], references: [id])
 }
 
@@ -73,6 +76,13 @@ enum Role {
   OWNER
   PROMOTER
   STAFF
+}
+
+enum BuffetType {
+   BUTECO
+   SUSHI
+   CHURRASCO
+   BAR
 }
 
 enum Payment {
