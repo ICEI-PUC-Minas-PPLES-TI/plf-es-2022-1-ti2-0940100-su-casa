@@ -1,4 +1,5 @@
 import { Role } from '.prisma/client';
+import { Residence } from '../../residence/entities/residence.entity';
 
 export class User {
   id?: string;
@@ -7,4 +8,6 @@ export class User {
   name: string;
   phone: string;
   role: Role;
+  event?: Event;
+  residence?: Residence;
 }
