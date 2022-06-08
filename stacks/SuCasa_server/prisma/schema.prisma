@@ -10,7 +10,7 @@ datasource db {
 model User {
   id        String     @id @default(uuid())
   email     String     @unique
-  name      String
+  name      String     @unique
   password  String
   phone     String
   role      Role
@@ -40,13 +40,12 @@ model Residence {
 }
 
 model Staff {
-  id            String  @id @default(uuid())
+  userStaffId   String  @id
   whatsapp      String?
   minConvidados Int
   maxConvidados Int
   price         Int
   description   String
-  userStaffId   String
   userStaff     User        @relation(fields: [userStaffId], references: [id])
   event         Event[]
 }
@@ -56,12 +55,13 @@ model Event {
   duration      Int
   numGuests     Int
   assignedAt    String
+  staffName     String
   promoterId    String
   residenceId   String
   staffId       String
   promoter      User        @relation(fields: [promoterId], references: [id])
   residence     Residence   @relation(fields: [residenceId], references: [id])
-  staff         Staff       @relation(fields: [staffId], references: [id])
+  staff         Staff       @relation(fields: [staffId], references: [userStaffId])
 }
 
 model Evaluation {

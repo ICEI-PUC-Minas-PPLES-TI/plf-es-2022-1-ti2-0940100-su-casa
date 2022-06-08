@@ -1,5 +1,5 @@
 import { Event } from '../entities/event.entity';
-import { IsDateString, IsNumber } from 'class-validator';
+import { IsDateString, IsNumber, IsString } from 'class-validator';
 
 export class CreateEventDto extends Event {
   @IsNumber()
@@ -10,4 +10,7 @@ export class CreateEventDto extends Event {
 
   @IsDateString('YYYY-MM-DD')
   assignedAt: string;
+
+  @IsString()
+  staffName: string;
 }

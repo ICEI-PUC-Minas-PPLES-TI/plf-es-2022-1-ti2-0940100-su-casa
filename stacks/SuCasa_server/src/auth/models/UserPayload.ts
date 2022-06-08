@@ -1,5 +1,4 @@
 import { Role } from '.prisma/client';
-import { Residence } from '../../residence/entities/residence.entity';
 
 export class UserPayload {
   sub: string;
@@ -7,7 +6,6 @@ export class UserPayload {
   name: string;
   phone: string;
   role: Role;
-  residence: Residence;
   iat?: number;
   exp?: number;
 }

@@ -18,6 +18,6 @@ export class AppController {
 
   @Get('/me')
   getMe(@CurrentUser() currentUser: User) {
-    return this.userService.get(currentUser.id);
+    return this.userService.get(currentUser);
   }
 }

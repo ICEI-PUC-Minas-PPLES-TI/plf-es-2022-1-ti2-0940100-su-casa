@@ -7,6 +7,7 @@ import { AuthService } from './auth.service';
 import { LoginValidationMiddleware } from './middlewares/login-validation.middleware';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { LocalStrategy } from './strategies/local.strategy';
+
 @Module({
   imports: [
     UserModule,
@@ -18,6 +19,7 @@ import { LocalStrategy } from './strategies/local.strategy';
   ],
   controllers: [AuthController],
   providers: [AuthService, LocalStrategy, JwtStrategy],
+  exports: [AuthService],
 })
 export class AuthModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
