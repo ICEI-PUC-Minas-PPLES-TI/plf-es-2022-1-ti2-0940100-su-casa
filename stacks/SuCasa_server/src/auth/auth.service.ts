@@ -6,6 +6,7 @@ import { User } from 'src/user/entities/user.entity';
 import { UserPayload } from './models/UserPayload';
 import { JwtService } from '@nestjs/jwt';
 import { UserToken } from './models/UserToken';
+
 @Injectable()
 export class AuthService {
   constructor(
@@ -18,6 +19,8 @@ export class AuthService {
       sub: user.id,
       email: user.email,
       name: user.name,
+      phone: user.phone,
+      role: user.role,
     };
 
     const jwtToken = this.jwtService.sign(payload);
