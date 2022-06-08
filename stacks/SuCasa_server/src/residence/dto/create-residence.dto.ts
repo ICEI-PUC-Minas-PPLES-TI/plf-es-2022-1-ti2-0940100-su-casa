@@ -1,26 +1,38 @@
 import { Residence } from '../entities/residence.entity';
-import {
-  IsEmail,
-  IsNumber,
-  IsString,
-  Matches,
-  MaxLength,
-  MinLength,
-} from 'class-validator';
+import { IsNumber, IsObject, IsString } from 'class-validator';
+import { User } from '../../user/entities/user.entity';
 
-export class CreateUserDto extends Residence {
-  @IsEmail()
+export class CreateResidenceDto extends Residence {
+  @IsString()
   cep: string;
 
   @IsString()
   estado: string;
 
   @IsString()
-  ciade: string;
+  cidade: string;
 
   @IsString()
   rua: string;
 
   @IsString()
   numero: string;
+
+  @IsString()
+  bairro: string;
+
+  @IsNumber()
+  numCapacity: number;
+
+  @IsNumber()
+  tamLocal: number;
+
+  @IsNumber()
+  numToilet: number;
+
+  @IsString()
+  availability: string;
+
+  @IsString()
+  owner: User;
 }

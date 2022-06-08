@@ -4,9 +4,6 @@ import { CreateUserDto } from './dto/create-user.dto';
 import * as bcrypt from 'bcrypt';
 @Injectable()
 export class UserService {
-  isRunning() {
-    console.log('isRunning');
-  }
   constructor(private readonly prisma: PrismaService) {}
 
   async create(createUserDto: CreateUserDto) {
@@ -25,5 +22,9 @@ export class UserService {
 
   findByEmail(email: string) {
     return this.prisma.user.findUnique({ where: { email } });
+  }
+
+  get(user: any) {
+    return user.id;
   }
 }

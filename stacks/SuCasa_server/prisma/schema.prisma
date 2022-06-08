@@ -15,18 +15,25 @@ model User {
   phone    String
   role     Role
   event    Event[]
-  property Property[]
+  residence Residence[]
 }
 
-model Property {
+model Residence {
   id           String       @id @default(uuid())
   description  String?
-  address      String       @unique
-  availability DateTime
+  cep          String
+  estado       String
+  cidade       String
+  rua          String
+  numero       String
+  bairro       String
+  numCapacity  Int
+  tamLocal     Int
+  numToilet    Int
+  availability String
   ownerId      String
-  price        Int
-  propertySize Int
-  owner        User         @relation(fields: [ownerId], references: [id])
+  price        Int?
+  owner        User?         @relation(fields: [ownerId], references: [id])
   evaluation   Evaluation[]
   event        Event[]
 }
@@ -36,7 +43,7 @@ model Staff {
   name       String  @unique
   numWorkers Int?
   price      Int
-  Event      Event[]
+  event      Event[]
 }
 
 model Event {
@@ -48,9 +55,9 @@ model Event {
   promoterId String
   propertyId String
   promoter   User        @relation(fields: [promoterId], references: [id])
-  property   Property    @relation(fields: [propertyId], references: [id])
-  Evaluation Evaluation?
-  Staff      Staff[]
+  residence  Residence    @relation(fields: [propertyId], references: [id])
+  evaluation Evaluation?
+  staff      Staff[]
 }
 
 model Evaluation {
@@ -58,8 +65,8 @@ model Evaluation {
   eventId    String   @unique
   propertyId String
   grade      Int
-  Event      Event    @relation(fields: [eventId], references: [id])
-  property   Property @relation(fields: [propertyId], references: [id])
+  event      Event     @relation(fields: [eventId], references: [id])
+  residence  Residence @relation(fields: [propertyId], references: [id])
 }
 
 enum Role {
