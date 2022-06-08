@@ -45,7 +45,7 @@ Residências são consideradas ativos na classificação contábil. Contudo, tra
 
 A primeira coisa que vem à mente seria disponibilizar o imóvel para locação – integral ou de alguns cômodos. Entretanto, quando o proprietário reside no imóvel, essa opção se torna, às vezes, inconveniente.
 
-O proprietário do imóvel que inspirou a criação da aplicação, identificou que as despesas envolvendo sua casa custavam anualmente aproximadamente R$ 30 mil. A partir disso, ele começou a procurar maneiras para reduzir as despesas. Contudo, a principal delas era compulsória: o IPTU - 1% do valor venal para imóveis acima de R$ 1 milhão, conforme consta na tabela III da Lei nº 5.641/1989. As demais eram manutenções necessárias. Desta forma, não restou muito para se fazer em relação as despesas.
+O proprietário do imóvel que inspirou a criação da aplicação, identificou que as despesas envolvendo sua casa custavam anualmente aproximadamente 30 mil reais. A partir disso, ele começou a procurar maneiras para reduzir as despesas. Contudo, a principal delas era compulsória: o IPTU - 1% do valor venal para imóveis acima de R$ 1 milhão, conforme consta na tabela III da Lei nº 5.641/1989. As demais eram manutenções necessárias. Desta forma, não restou muito para se fazer em relação as despesas.
 
 Assim, a única solução viável seria a geração de receitas – com uma ressalva: ele não deixaria de morar em sua casa. Cogitou alugar alguns cômodos. Porém, a ideia de se ter por vários dias algumas pessoas dentro de sua casa, o fizeram desistir. Cogitou, em seguida, alugar seu imóvel para temporada. Contudo, isso feria sua regra inicial, pois por alguns dias não poderia morar em sua casa. Além disso, a ideia de desconhecidos presentes por vários dias em sua residência sem a sua presença, lhe causava desconforto.
 
@@ -57,12 +57,12 @@ O proprietário gostaria de ter algum controle sobre as pessoas que trabalhariam
 
     1.3 Objetivo geral
     
-A Su Casa busca elaborar um sistema para que proprietários possam disponibilizar espaços em sua casa para a realização de eventos,assim garantindo uma renda extra com mais segurança, além disso o sistema faria a seleção automática do staff, com base nos profissionais cadastrados no sistema, facilitando consideravelmente a realização do evento para o promotor.
+A Su Casa busca elaborar um sistema para que o proprietário possa disponibilizar um espaço em sua casa para a realização de eventos,assim garantindo uma renda extra com mais segurança, além disso o sistema faria a seleção automática do staff, com base nos profissionais cadastrados no sistema, facilitando consideravelmente a realização do evento para o promotor.
 
         1.3.1 Objetivos específicos
 
 - Desenvolver um sistema de comunicação entre organizador e prestador de serviço para que o evento seja planejado, negociado e organizado de maneira agradável, econômica e segura
-- Entregar ao organizador ofertas de eventos em locais e com staff mais baratos, privados e econômicos do que as ofertadas no mercado 
+- Entregar ao organizador ofertas de eventos em um local e com staff mais baratos, privados e econômicos do que as ofertadas no mercado 
 -Desenvolver a modelagem de processos de negócios, focando em organização de eventos, na interatividade entre os usuários, staff e locatário.
 
     1.4 Justificativas
@@ -97,9 +97,7 @@ A proposta consiste na criação de um sistema que permita ao usuário realizar 
 *Descrição geral dos processos*
 
 O proprietário do imóvel realizará o cadastro da sua residência no aplicativo e registrará os dias disponíveis para realização de eventos e seus respectivos valores.
-Cozinheiras, restaurantes e buffets especializados realizarão o cadastro dos menus que oferecem e seus respectivos preços com base no número de convidados e datas.
-Garçons cadastrarão, além de seu perfil, sua disponibilidade e preço por hora de trabalho e serão alocados aleatoriamente, com base no menor custo, a partir da definição do menu e número de convidados.
-Caberá ao proprietário aprovar os perfis cadastrados de garçons, cozinheiras, restaurantes e buffets.
+Staffs especializados realizarão o cadastro dos menus que oferecem e seus respectivos preços com base no número de convidados e datas.
 Por fim, restará ao usuário final, o promotor do evento, seja ele o anfitrião ou o cerimonial, realizar seu cadastro, promover pesquisas e selecionar a data do evento no local, o menu e o número de convidados apenas.
 
 ## 3.3. Modelagem dos Processos
@@ -108,7 +106,7 @@ Por fim, restará ao usuário final, o promotor do evento, seja ele o anfitrião
 
 Através desse processo o usuário poderá ser cadastrado, assim que o sistema garante que o usuário não está passando informações já disponíveis no banco de dados, o usuário é indagado sobre qual tipo de pessoa ele será no sistema(Promoter ou Locatário). O promoter neste momento irá apenas ser cadastrado e assim finalizando seu processo, enquanto o locatário irá passar imediatamente para o processo da casa decorrente que nosso sistema terá inicialmente apenas um locatário e um local apenas, após o processos de cadastramento da residência o processo de cadastramento de usuário é finalizado.
 
-![ModelagemCadastroPessoa drawio](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2022-1-ti2-0940100-su-casa/blob/6bbbf7c5a6e7bc1058052a1f4c8ad7b9ddd37d9b/docs/imagens/CadastroDeUsu%C3%A1rioFinalApresenta%C3%A7%C3%A3o.png)
+![ModelagemCadastroPessoa drawio](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2022-1-ti2-0940100-su-casa/blob/37ec0a98ec08e109ed2664be482e5ccadf28bb3e/docs/imagens/Cadastro%20de%20usu%C3%A1rio%20final%20md.drawio.png)
 
 ### 3.3.2 Processo 2 - CADASTRO DE RESIDÊNCIA
 
@@ -117,9 +115,9 @@ Através desse processo o locatário ira registrar sua residência informando o 
 ![CadastroResidência](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2022-1-ti2-0940100-su-casa/blob/master/docs/imagens/cadastro-de-resid%C3%AAncia.png)
 ### 3.3.3 Processo 3 – CADASTRAMENTO DO STAFF (PRESTADOR DE SERVIÇO)
 
-Através desse processo de cadastramento do staff é que ocorre a inserção dos prestadores de serviço no sistema. Desta forma, cada usuário preenche um formulário com dados de seus serviços e equipe. Estee é submetido para aprovação do administrador - no caso, o proprietário do imóvel. Caso haja alguma pendência, esta é informada ao usuário que deverá reiniciar o cadastramento. Caso contrário, o usuário é informado que seu cadastrado foi realizado com sucesso.
+Através desse processo de cadastramento do staff é que ocorre a inserção dos prestadores de serviço no sistema. Desta forma, cada usuário preenche um formulário com dados de seus serviços e equipe.
 
-![CADSTAFF drawio (3)](https://user-images.githubusercontent.com/68079428/165407737-0f30fed0-a1d0-4dd1-b436-d7c30cb8af57.png)
+![CADSTAFF drawio (3)](https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2022-1-ti2-0940100-su-casa/blob/37ec0a98ec08e109ed2664be482e5ccadf28bb3e/docs/imagens/Cadastro%20de%20staff%20final%20md.drawio.png)
 
 
 ### 3.3.4 Processo 4 – SERVIÇO DE AGENDAMENTO
@@ -164,7 +162,6 @@ A avaliação do sistema é realizada pelo usuário, no caso, promotor de evento
 | CEP | Caixa de Texto | Mínimo de 8 caracteres |  |
 | Estado | Seleção única |  |   |
 | Cidade| Caixa de Texto | |   |
-| Endereço | Caixa de Texto | |   |
 | Rua | Caixa de Texto | |   |
 | Número | Caixa de Texto | Formato de número |   |
 
@@ -195,11 +192,6 @@ A avaliação do sistema é realizada pelo usuário, no caso, promotor de evento
 | [Cadastrar Staff] | [Área de texto, Caixa de texto, Número, Data, Imagem, Seleção única, Escolha Múltipla, Arquivo, Link] |  |  |
 |    |    |     |
 | Código único | Caixa de Texto | mínimo de 8 caracteres |   |
-| E-mail | Caixa de Texto | formato de e-mail |  |
-| Senha | Caixa de Texto | mínimo de 8 caracteres |   |
-| Confirma Senha | Caixa de Texto | mínimo de 8 caracteres |   |
-| Nome | Caixa de Texto | mínimo de 8 caracteres |   |
-| Telefone | Caixa de Texto | número |   |
 | Whatsapp | Caixa de Texto | número |   |
 | Tipo de serviço | Escolha Múltipla | opções |   |
 | Descrição do serviço | Caixa de Texto | mínimo de 8 caracteres |   |
