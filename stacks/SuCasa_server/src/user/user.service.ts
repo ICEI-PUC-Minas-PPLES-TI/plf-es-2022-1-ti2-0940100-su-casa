@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import * as bcrypt from 'bcrypt';
-import { Residence } from '../residence/entities/residence.entity';
 
 @Injectable()
 export class UserService {
@@ -48,11 +47,11 @@ export class UserService {
     return user;
   }
 
-  async getEventos(residence: Residence) {
+  async getEventos() {
     const events = await this.prisma.event.findMany({
       where: {
         residenceId: {
-          equals: residence.id,
+          equals: 'd6665e1f-0bd8-491b-9eeb-e975ad01c713',
         },
       },
     });
