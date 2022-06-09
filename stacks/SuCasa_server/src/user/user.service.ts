@@ -3,6 +3,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import * as bcrypt from 'bcrypt';
 import { User } from './entities/user.entity';
+import { Residence } from '../residence/entities/residence.entity';
 
 @Injectable()
 export class UserService {
@@ -46,19 +47,18 @@ export class UserService {
 
   async getEventos(user: User) {
     if (user.role == 'OWNER') {
+      const residence: Residence = await this.getResidence(user);
+
       return await this.prisma.event.findMany({
         where: {
           residenceId: {
-            equals: 'd6665e1f-0bd8-491b-9eeb-e975ad01c713',
+            equals: residence.id,
           },
         },
       });
     } else if (user.role == 'PROMOTER') {
       return await this.prisma.event.findMany({
         where: {
-          residenceId: {
-            equals: 'd6665e1f-0bd8-491b-9eeb-e975ad01c713',
-          },
           promoterId: {
             equals: user.id,
           },
@@ -67,9 +67,6 @@ export class UserService {
     } else if (user.role == 'STAFF') {
       return await this.prisma.event.findMany({
         where: {
-          residenceId: {
-            equals: 'd6665e1f-0bd8-491b-9eeb-e975ad01c713',
-          },
           staffId: {
             equals: user.id,
           },
@@ -82,9 +79,9 @@ export class UserService {
 
   async getResidence(user: User) {
     if (user.role == 'OWNER') {
-      return await this.prisma.residence.findUnique({
+      return await this.prisma.residence.findFirst({
         where: {
-          id: 'd6665e1f-0bd8-491b-9eeb-e975ad01c713',
+          ownerId: user.id,
         },
       });
     }
