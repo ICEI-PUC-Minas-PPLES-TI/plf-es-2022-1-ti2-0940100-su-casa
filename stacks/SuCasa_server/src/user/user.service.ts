@@ -84,18 +84,24 @@ export class UserService {
           ownerId: user.id,
         },
       });
+    } else {
+      throw new Error('Not Allowed');
     }
   }
 
   async getEvaluation(user: User) {
     if (user.role == 'OWNER') {
+      const residence: Residence = await this.getResidence(user);
+
       return await this.prisma.evaluation.findMany({
         where: {
           residenceId: {
-            equals: 'd6665e1f-0bd8-491b-9eeb-e975ad01c713',
+            equals: residence.id,
           },
         },
       });
+    } else {
+      throw new Error('Not Allowed');
     }
   }
 }
