@@ -17,6 +17,7 @@ model User {
   event     Event[]
   residence Residence[]
   staff     Staff[]
+  evaluation Evaluation?
 }
 
 model Residence {
@@ -65,11 +66,13 @@ model Event {
 }
 
 model Evaluation {
-  id         String   @id @default(uuid())
-  eventId    String   @unique
-  propertyId String
-  grade      Int
-  residence  Residence @relation(fields: [propertyId], references: [id])
+  id            String   @id @default(uuid())
+  residenceId   String
+  userId        String
+  grade         Int
+  description   String
+  residence     Residence @relation(fields: [residenceId], references: [id])
+  user          User      @relation(fields: [userId], references: [id])
 }
 
 enum Role {

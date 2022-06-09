@@ -9,6 +9,7 @@ import { ResidenceModule } from './residence/residence.module';
 import { UserModule } from './user/user.module';
 import { EventModule } from './Event/event.module';
 import { StaffModule } from './staff/staff.module';
+import { EvaluationModule } from './evaluation/evaluation.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { StaffModule } from './staff/staff.module';
     ResidenceModule,
     EventModule,
     StaffModule,
+    EvaluationModule,
   ],
   controllers: [AppController],
   providers: [AppService, { provide: APP_GUARD, useClass: JwtAuthGuard }],
