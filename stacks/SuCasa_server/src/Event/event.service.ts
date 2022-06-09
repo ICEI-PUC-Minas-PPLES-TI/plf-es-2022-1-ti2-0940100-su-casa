@@ -23,7 +23,7 @@ export class EventService {
 
       const data = {
         ...createEventDto,
-        promoterId: '9f0d9bf5-9e1c-4637-a81b-8336a9fe8fa5',
+        promoterId: user.id,
         residenceId: 'd6665e1f-0bd8-491b-9eeb-e975ad01c713', //residenceId: residenceId,
         staffId: staff.id,
       };
