@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import * as bcrypt from 'bcrypt';
+import { User } from './entities/user.entity';
 
 @Injectable()
 export class UserService {
@@ -26,11 +27,9 @@ export class UserService {
   }
 
   getUserById(id: string) {
-    const user = this.prisma.user.findUnique({
+    return this.prisma.user.findUnique({
       where: { id },
     });
-
-    return user;
   }
 
   async get(user) {
@@ -42,21 +41,42 @@ export class UserService {
   }
 
   async getIdByName(name) {
-    const user = this.prisma.user.findUnique({ where: { name } });
-
-    return user;
+    return this.prisma.user.findUnique({ where: { name } });
   }
 
-  async getEventos() {
-    const events = await this.prisma.event.findMany({
-      where: {
-        residenceId: {
-          equals: 'd6665e1f-0bd8-491b-9eeb-e975ad01c713',
+  async getEventos(user: User) {
+    if (user.role == 'OWNER') {
+      return await this.prisma.event.findMany({
+        where: {
+          residenceId: {
+            equals: 'd6665e1f-0bd8-491b-9eeb-e975ad01c713',
+          },
         },
-      },
-    });
-
-    console.log(events);
-    return events;
+      });
+    } else if (user.role == 'PROMOTER') {
+      return await this.prisma.event.findMany({
+        where: {
+          residenceId: {
+            equals: 'd6665e1f-0bd8-491b-9eeb-e975ad01c713',
+          },
+          promoterId: {
+            equals: user.id,
+          },
+        },
+      });
+    } else if (user.role == 'STAFF') {
+      return await this.prisma.event.findMany({
+        where: {
+          residenceId: {
+            equals: 'd6665e1f-0bd8-491b-9eeb-e975ad01c713',
+          },
+          staffId: {
+            equals: user.id,
+          },
+        },
+      });
+    } else {
+      throw new Error('Not Allowed');
+    }
   }
 }

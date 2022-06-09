@@ -2,6 +2,8 @@ import { Controller, Post, Body, Get } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { IsPublic } from 'src/auth/decorators/is-public.decorator';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { User } from './entities/user.entity';
 
 @Controller('user')
 export class UserController {
@@ -14,7 +16,7 @@ export class UserController {
   }
 
   @Get()
-  getEvents() {
-    return this.userService.getEventos();
+  getEvents(@CurrentUser() user: User) {
+    return this.userService.getEventos(user);
   }
 }
