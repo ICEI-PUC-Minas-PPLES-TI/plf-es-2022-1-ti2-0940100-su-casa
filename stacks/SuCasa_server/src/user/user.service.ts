@@ -79,4 +79,26 @@ export class UserService {
       throw new Error('Not Allowed');
     }
   }
+
+  async getResidence(user: User) {
+    if (user.role == 'OWNER') {
+      return await this.prisma.residence.findUnique({
+        where: {
+          id: 'd6665e1f-0bd8-491b-9eeb-e975ad01c713',
+        },
+      });
+    }
+  }
+
+  async getEvaluation(user: User) {
+    if (user.role == 'OWNER') {
+      return await this.prisma.evaluation.findMany({
+        where: {
+          residenceId: {
+            equals: 'd6665e1f-0bd8-491b-9eeb-e975ad01c713',
+          },
+        },
+      });
+    }
+  }
 }

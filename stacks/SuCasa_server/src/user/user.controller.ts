@@ -15,8 +15,18 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
-  @Get()
+  @Get('events')
   getEvents(@CurrentUser() user: User) {
     return this.userService.getEventos(user);
+  }
+
+  @Get('residence')
+  getResidence(@CurrentUser() user: User) {
+    return this.userService.getResidence(user);
+  }
+
+  @Get('evaluation')
+  getEvaluation(@CurrentUser() user: User) {
+    return this.userService.getEvaluation(user);
   }
 }
