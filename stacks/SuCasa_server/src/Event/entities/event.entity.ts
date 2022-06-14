@@ -5,4 +5,5 @@ export class Event {
   description: string;
   duration: number;
   numGuests: number;
+  status: string;
 }

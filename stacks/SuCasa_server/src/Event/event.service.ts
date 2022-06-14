@@ -3,6 +3,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { CreateEventDto } from './dto/create-event.dto';
 import { User } from '../user/entities/user.entity';
 import { UserService } from '../user/user.service';
+import { UpadateEventDto } from './dto/update-event.dto';
 
 @Injectable()
 export class EventService {
@@ -27,9 +28,22 @@ export class EventService {
         residenceId: 'd6665e1f-0bd8-491b-9eeb-e975ad01c713', //residenceId: residenceId,
         staffId: staff.id,
       };
-      const createdEvent = await this.prisma.event.create({ data });
+      return await this.prisma.event.create({ data });
+    } else {
+      throw new Error('Your account permissions are not alowed');
+    }
+  }
 
-      return createdEvent;
+  async deleteEvent(updateEventDto: UpadateEventDto, user: User) {
+    if (user.role == 'PROMOTER') {
+      const data = {
+        ...updateEventDto,
+        status: 'FINISHED',
+      };
+      return await this.prisma.event.update({
+        data,
+        where: undefined,
+      });
     } else {
       throw new Error('Your account permissions are not alowed');
     }
