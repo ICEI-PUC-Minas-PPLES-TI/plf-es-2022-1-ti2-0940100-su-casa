@@ -4,6 +4,7 @@ import { CreateEventDto } from './dto/create-event.dto';
 import { User } from '../user/entities/user.entity';
 import { IsPublic } from '../auth/decorators/is-public.decorator';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { UpadateEventDto } from './dto/update-event.dto';
 
 @Controller('event')
 export class EventController {
@@ -12,6 +13,11 @@ export class EventController {
   @Post()
   create(@Body() createEventDto: CreateEventDto, @CurrentUser() user: User) {
     return this.eventService.create(createEventDto, user);
+  }
+
+  @Post('delete')
+  delete(@Body() updateEventDto: UpadateEventDto, @CurrentUser() user: User) {
+    return this.eventService.deleteEvent(updateEventDto, user);
   }
 
   @IsPublic()
