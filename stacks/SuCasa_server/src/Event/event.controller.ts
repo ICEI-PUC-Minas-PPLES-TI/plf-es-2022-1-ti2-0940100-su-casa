@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { EventService } from './event.service';
 import { CreateEventDto } from './dto/create-event.dto';
 import { User } from '../user/entities/user.entity';
@@ -24,5 +24,10 @@ export class EventController {
   @Post()
   showIsRunning() {
     return this.eventService.isRunning();
+  }
+
+  @Get('cancel')
+  getCancel(@CurrentUser() user: User) {
+    return this.eventService.countCanceledEvents(user);
   }
 }

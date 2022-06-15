@@ -36,12 +36,24 @@ export class EventService {
 
   async deleteEvent(updateEventDto: UpadateEventDto, user: User) {
     if (user.role == 'PROMOTER') {
-      return this.prisma.event.update({
+      return await this.prisma.event.update({
         where: {
           assignedAt: updateEventDto.assignedAt,
         },
         data: {
           status: updateEventDto.status,
+        },
+      });
+    } else {
+      throw new Error('Your account permissions are not allowed');
+    }
+  }
+
+  async countCanceledEvents(user: User) {
+    if (user.role == 'OWNER') {
+      return await this.prisma.event.count({
+        where: {
+          status: 'canceled',
         },
       });
     } else {
