@@ -50,6 +50,7 @@ main{
     align-items: center;
     transition: all ease-in-out 0.3s;
     background-color: #f4e9ed;
+    overflow-y: scroll;
 }
 
 .eventos > *{
