@@ -1,0 +1,21 @@
+main{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+}
+
+h1{
+    font-size: 30px;
+}
+
+.sobre{
+    display: flex;
+    flex-direction: column;
+    background-color: #f4e9ed;
+    width: 60%;
+    justify-content: space-around;
+    align-items: center;
+    padding: 4rem;
+}
