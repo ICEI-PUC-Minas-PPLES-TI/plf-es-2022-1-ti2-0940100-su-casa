@@ -13,4 +13,7 @@ export class CreateEventDto extends Event {
 
   @IsString()
   staffName: string;
+
+  @IsString()
+  status: string;
 }
