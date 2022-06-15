@@ -62,7 +62,7 @@ model Event {
   staffId       String
   promoter      User        @relation(fields: [promoterId], references: [id])
   residence     Residence   @relation(fields: [residenceId], references: [id])
-  status        Status
+  status        String
   staff         Staff       @relation(fields: [staffId], references: [userStaffId])
 }
 
@@ -95,10 +95,4 @@ enum Payment {
   PIX
   TICKET
   IN_CASH
-}
-
-enum Status {
- TOCOME
- FINISHED
- CANCELED
 }

@@ -3,5 +3,5 @@ import { IsString } from 'class-validator';
 
 export class UpadateEventDto extends CreateEventDto {
   @IsString()
-  staus: string;
+  status: string;
 }

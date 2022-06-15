@@ -25,27 +25,27 @@ export class EventService {
       const data = {
         ...createEventDto,
         promoterId: user.id,
-        residenceId: 'd6665e1f-0bd8-491b-9eeb-e975ad01c713', //residenceId: residenceId,
+        residenceId: 'd6665e1f-0bd8-491b-9eeb-e975ad01c713',
         staffId: staff.id,
       };
       return await this.prisma.event.create({ data });
     } else {
-      throw new Error('Your account permissions are not alowed');
+      throw new Error('Your account permissions are not allowed');
     }
   }
 
   async deleteEvent(updateEventDto: UpadateEventDto, user: User) {
     if (user.role == 'PROMOTER') {
-      const data = {
-        ...updateEventDto,
-        status: 'FINISHED',
-      };
-      return await this.prisma.event.update({
-        data,
-        where: undefined,
+      return this.prisma.event.update({
+        where: {
+          id: updateEventDto.id,
+        },
+        data: {
+          status: updateEventDto.status,
+        },
       });
     } else {
-      throw new Error('Your account permissions are not alowed');
+      throw new Error('Your account permissions are not allowed');
     }
   }
 }
