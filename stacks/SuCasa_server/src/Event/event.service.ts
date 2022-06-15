@@ -38,7 +38,7 @@ export class EventService {
     if (user.role == 'PROMOTER') {
       return this.prisma.event.update({
         where: {
-          id: updateEventDto.id,
+          assignedAt: updateEventDto.assignedAt,
         },
         data: {
           status: updateEventDto.status,

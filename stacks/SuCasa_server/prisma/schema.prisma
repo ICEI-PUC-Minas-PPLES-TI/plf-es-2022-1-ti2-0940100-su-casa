@@ -55,7 +55,7 @@ model Event {
   id            String      @id @default(uuid())
   duration      Int
   numGuests     Int
-  assignedAt    String
+  assignedAt    String      @unique
   staffName     String
   promoterId    String
   residenceId   String
