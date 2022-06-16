@@ -160,9 +160,6 @@ A avaliação do sistema é realizada pelo usuário, no caso, promotor de evento
 | **Campo** |    **Tipo**    |   **Restrições**   | **Valor default** |
 | --- | --- | --- | --- |
 | CEP | Caixa de Texto | Mínimo de 8 caracteres |  |
-| Estado | Seleção única |  |   |
-| Cidade| Caixa de Texto | |   |
-| Rua | Caixa de Texto | |   |
 | Número | Caixa de Texto | Formato de número |   |
 
 **Detalhes do local**
