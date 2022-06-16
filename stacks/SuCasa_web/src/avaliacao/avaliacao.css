@@ -89,6 +89,11 @@ input#rate-5:checked ~ label{
 input:checked ~ form{
   display: block;
 }
+
+::placeholder{
+color: #ffffff;
+}
+
 form header{
   width: 100%;
   font-size: 25px;
@@ -137,4 +142,5 @@ form .btn button{
 }
 form .btn button:hover{
   background: #8B4869;
+
 }

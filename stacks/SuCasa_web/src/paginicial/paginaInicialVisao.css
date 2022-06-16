@@ -43,14 +43,12 @@ main{
     margin-top: 3rem;
     display: flex;
     width: 50%;
-    /* border: 0.2rem solid #c2c2c2; */
     cursor: pointer;
     padding: 2.5rem;
     flex-direction: column;
     align-items: center;
     transition: all ease-in-out 0.3s;
     background-color: #f4e9ed;
-    overflow-y: scroll;
 }
 
 .eventos > *{

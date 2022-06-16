@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>AVALIAÇÂO DO USUARIO</title>
-    <link rel="stylesheet" href="avaliação.css">
+    <link rel="stylesheet" href="avaliacao.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   </head>
   <body>
@@ -13,7 +13,7 @@
         <H1>AVALIAÇÃO DO USUÁRIO</H1>
         </div>
       <div class="post">
-        <div class="text">OBRIGADO POR DEIXAR SUA AVALIAÇÂO!</div>
+        <div class="text">OBRIGADO POR DEIXAR SUA AVALIAÇÃO!</div>
         <div class="edit">EDITAR</div>
       </div>
       <div class="star-widget">
@@ -38,7 +38,7 @@
         </form>
       </div>
     </div>
-    <script>
+     <script>
       const btn = document.querySelector("button");
       const post = document.querySelector(".post");
       const widget = document.querySelector(".star-widget");
@@ -50,6 +50,11 @@
           widget.style.display = "block";
           post.style.display = "none";
         }
+        setTimeout(() =>{
+            let uri = window.location.pathname.replace("avaliacao/avaliacao.html", "paginicial/paginaInicialVisaoPromoter.html")
+
+            window.location.href = `${window.location.origin}${uri}`
+        }, 3000)
         return false;
       }
     </script>
