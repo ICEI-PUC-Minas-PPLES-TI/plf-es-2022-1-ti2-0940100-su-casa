@@ -4,6 +4,7 @@ main{
     height: 100vh;
     font-family: 'Lato', sans-serif;
     font-weight: bold;
+    justify-content: stretch;
 }
 
 h1{
@@ -11,11 +12,10 @@ h1{
 }
 
 .sobre{
-    float: right;
+    width: 60%;
     display: flex;
     flex-direction: column;
     background-color: #f4e9ed;
-    width: 60%;
     justify-content: space-around;
     align-items: center;
     padding: 4rem;
@@ -33,11 +33,12 @@ h1{
 
 /* CADASTRO CSS*/
 .cadastro{
-    background-color: #9b5b7d;
     width: 40%;
+    background-color: #9b5b7d;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: rig;
 }
 
 .title-login {
@@ -101,18 +102,17 @@ form label, form legend{
 
 @media screen and (max-width: 907px) {
 	main {
-		display: inline-block;
-	}
+		display: flex;
+        flex-wrap: wrap;
+    }
 
     .sobre, .cadastro {
         width: 100%;
     }
 
     .sobre{
-        display: flex;
         justify-content: center;
         align-items: center;
-        width: fit-content;
     }
 
     .sobre > * {
@@ -120,6 +120,34 @@ form label, form legend{
     }
 
     .cadastro {
-        padding: 0 0 5rem;
+        padding: 0 0 2rem 0;
     }
+
+    .imagemex{
+        width: 15rem;
+    }
+
+    .imagemres{
+        width: 30rem;
+        height: 10rem;
+    }
+    
+}
+
+@media screen and (max-width: 370px) {
+    .imagemex{
+        width: 10rem;
+    }
+
+    .enviar {
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 610px) {
+    .imagemres{
+        width: 8rem;
+        height: 8rem !important;
+    }
+
 }
