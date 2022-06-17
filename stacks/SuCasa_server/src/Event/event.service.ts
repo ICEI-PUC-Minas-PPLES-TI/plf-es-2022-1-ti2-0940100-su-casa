@@ -49,15 +49,11 @@ export class EventService {
     }
   }
 
-  async countCanceledEvents(user: User) {
-    if (user.role == 'OWNER') {
-      return await this.prisma.event.count({
-        where: {
-          status: 'canceled',
-        },
-      });
-    } else {
-      throw new Error('Your account permissions are not allowed');
-    }
+  async countCanceledEvents() {
+    return await this.prisma.event.count({
+      where: {
+        status: 'canceled',
+      },
+    });
   }
 }

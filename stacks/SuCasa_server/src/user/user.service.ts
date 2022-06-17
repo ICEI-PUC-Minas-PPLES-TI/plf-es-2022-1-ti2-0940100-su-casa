@@ -34,11 +34,7 @@ export class UserService {
   }
 
   async get(user) {
-    const currentUser = await this.getUserById(user.id);
-    return {
-      ...currentUser,
-      password: undefined,
-    };
+    return user;
   }
 
   async getIdByName(name) {
@@ -103,5 +99,15 @@ export class UserService {
     } else {
       throw new Error('Not Allowed');
     }
+  }
+
+  async countUserEvents() {
+    //if (user.role == 'OWNER') {
+    return await this.prisma.user.count({
+      where: {
+        role: 'PROMOTER',
+        event: {},
+      },
+    });
   }
 }

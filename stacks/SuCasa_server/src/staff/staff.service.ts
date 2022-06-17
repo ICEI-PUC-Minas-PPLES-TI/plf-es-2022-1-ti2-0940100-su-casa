@@ -17,9 +17,7 @@ export class StaffService {
         userStaffId: user.id,
       };
 
-      const createdStaff = await this.prisma.staff.create({ data });
-
-      return createdStaff;
+      return await this.prisma.staff.create({ data });
     } else {
       throw new Error('Your account permissions are not alowed');
     }

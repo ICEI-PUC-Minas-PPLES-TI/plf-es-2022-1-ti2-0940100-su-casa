@@ -26,8 +26,9 @@ export class EventController {
     return this.eventService.isRunning();
   }
 
+  @IsPublic()
   @Get('cancel')
-  getCancel(@CurrentUser() user: User) {
-    return this.eventService.countCanceledEvents(user);
+  getCancel() {
+    return this.eventService.countCanceledEvents();
   }
 }

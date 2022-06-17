@@ -29,4 +29,10 @@ export class UserController {
   getEvaluation(@CurrentUser() user: User) {
     return this.userService.getEvaluation(user);
   }
+
+  @IsPublic()
+  @Get('count')
+  getUserEvent() {
+    return this.userService.countUserEvents();
+  }
 }
