@@ -35,4 +35,10 @@ export class UserController {
   getUserEvent(@CurrentUser() user: User) {
     return this.userService.countUserEvents(user);
   }
+
+  @IsPublic()
+  @Get('evaluation/avg')
+  getAverageEvaluation(@CurrentUser() user: User) {
+    return this.userService.getAverageEvaluation(user);
+  }
 }

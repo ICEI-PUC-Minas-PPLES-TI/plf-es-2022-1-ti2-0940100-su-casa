@@ -101,9 +101,24 @@ export class UserService {
     }
   }
 
+  async getAverageEvaluation(user) {
+    if (user.role == 'OWNER') {
+      const aggregations = await this.prisma.evaluation.aggregate({
+        _avg: {
+          grade: true,
+        },
+        where: {
+          residenceId: 'd6665e1f-0bd8-491b-9eeb-e975ad01c713',
+        },
+      });
+
+      return aggregations._avg.grade;
+    }
+  }
+
   async countUserEvents(user: User) {
     if (user.role == 'OWNER') {
-      return await this.prisma.user.count({
+      await this.prisma.user.count({
         where: {
           role: 'PROMOTER',
           event: {},
