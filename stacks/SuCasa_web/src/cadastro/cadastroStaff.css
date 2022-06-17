@@ -37,6 +37,13 @@ main {
     overflow: hidden;
 }
 
+.hover {
+    border-color: #9b5b7d;
+    color: #9b5b7d;
+    font-size: 18px;
+    box-shadow: 0 0 10px rgb(94, 88, 88);
+}
+
 .card:hover {
     border-color: #9b5b7d;
     color: #9b5b7d;

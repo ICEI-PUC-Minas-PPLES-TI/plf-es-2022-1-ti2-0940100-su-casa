@@ -14,55 +14,74 @@
 </head>
 
 <body>
-    <main>
+<main>
 
-        <div class="sobre">
-            <h1>Fotos da residencia</h1>
-            <img src="" alt="Logo Do Su Casa">
-            <img class="imagemex" src="../../images/casa.jpg">
-        </div>
+    <div class="sobre">
+        <h1 style="margin-bottom: 2rem">Foto da residencia</h1>
+        <label for="imagemCasa" style="cursor: pointer">
+            <img class="imagemex" src="../../images/imagem.png" style="height: 30rem">
+        </label>
+        <legend style="margin-top: 2rem; color: #7e7e7e">
+            Apenas a primeira imagem será exibida.
+        </legend>
+        <input multiple id="imagemCasa" type="file" name="imagensCasa" style="display: none" onchange="previewImage()">
+    </div>
 
-        <div class="cadastro">
-            <form>
+    <div class="cadastro" style="overflow: auto !important; padding-top: 3rem">
+        <form>
 
-                <label for="Cep">CEP</label>
-                <input type="number" id="CEP" class="input-padrao" required>
+            <label for="Cep">CEP</label>
+            <input type="number" id="CEP" class="input-padrao" required>
 
-                <label for="numero">Número</label>
-                <input type="number" id="número" class="input-padrao" required>
+            <label for="numero">Número</label>
+            <input type="number" id="número" class="input-padrao" required>
 
-                <label for="nome">Capacidade MAX de pessoas:</label>
-                <input type="text" id="Capacidade" class="input-padrao" required>
+            <label for="nome">Capacidade MAX de pessoas:</label>
+            <input type="text" id="Capacidade" class="input-padrao" required>
 
-                <label for="email">Tamanho do local</label>
-                <input type="number" id="Tamanho" class="input-padrao" required>
+            <label for="email">Tamanho do local</label>
+            <input type="number" id="Tamanho" class="input-padrao" required>
 
-                <label for="telefone">Número de banheiro:</label>
-                <input type="number" id="banheiros" class="input-padrao" required>
-                <label for="conf">Valor por Dia</label>
-                <input type="number" id="" class="input-padrao" required>
+            <label for="telefone">Número de banheiro:</label>
+            <input type="number" id="banheiros" class="input-padrao" required>
+            <label for="conf">Valor por Dia</label>
+            <input type="number" id="" class="input-padrao" required>
 
-                <fieldset>
-                    <legend>Disponibilidade</legend>
-                    <div class="datas">
-                        <label>Sábado:
-                            <input name="dias" type="checkbox" id="dias" /></label>
-                        <label>Domingo:
-                            <input name="dias" type="checkbox" id="dias" /></label>
-                        <label>Quarta-feira:
-                            <input name="dias" type="checkbox" id="dias" /></label>
-                        <label>Quinta-feira:
-                            <input name="dias" type="checkbox" id="dias" /></label>
-                        <label>Sexta-feira:
-                            <input name="dias" type="checkbox" id="dias" /></label>
-                    </div>
-                </fieldset>
+            <fieldset>
+                <legend>Disponibilidade</legend>
+                <div class="datas">
+                    <label><br>
+                        Sábado:
+                        <input name="dias" type="checkbox" id="dias" /></label>
+                    <label><br>
+                        Domingo:
+                        <input name="dias" type="checkbox" id="dias" /></label>
+                    <label><br>
+                        Quarta-feira:
+                        <input name="dias" type="checkbox" id="dias" /></label>
+                    <label><br>
+                        Quinta-feira:
+                        <input name="dias" type="checkbox" id="dias" /></label>
+                    <label><br>
+                        Sexta-feira:
+                        <input name="dias" type="checkbox" id="dias" /></label>
+                </div>
+            </fieldset>
 
-                <input type="submit" value="Cadastrar" class="enviar">
-            </form>
-        </div>
-    </main>
-
+            <input type="submit" value="Cadastrar" class="enviar">
+        </form>
+    </div>
+</main>
+<script>
+    function previewImage(event) {
+        let imgInp = document.querySelector("#imagemCasa")
+        let image = document.querySelector(".imagemex")
+        const [file] = imgInp.files
+        if (file) {
+            image.src = URL.createObjectURL(file)
+        }
+    }
+</script>
 </body>
 
 </html>

@@ -1,0 +1,18 @@
+@media screen and (max-width: 907px) {
+    main {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .imagemex {
+        width: 90%;
+    }
+
+    .sobre{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+}

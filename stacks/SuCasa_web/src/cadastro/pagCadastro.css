@@ -21,9 +21,11 @@ h1{
     padding: 4rem;
 }
 
-.imagemex{
+.imagemex {
     width: 30rem;
     border-radius: 5px;
+    box-shadow: 12px 12px 12px #9b9b9b;
+    border: none;
 }
 
 
@@ -99,14 +101,22 @@ form label, form legend{
 
 @media screen and (max-width: 907px) {
 	main {
-		flex-direction: column;
-        width: 100vw;
-        justify-content: center;
-        align-items: center;
+		display: inline-block;
 	}
 
     .sobre, .cadastro {
         width: 100%;
+    }
+
+    .sobre{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
+    }
+
+    .sobre > * {
+        margin-top: 1rem
     }
 
     .cadastro {
