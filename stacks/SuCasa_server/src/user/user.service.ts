@@ -101,13 +101,14 @@ export class UserService {
     }
   }
 
-  async countUserEvents() {
-    //if (user.role == 'OWNER') {
-    return await this.prisma.user.count({
-      where: {
-        role: 'PROMOTER',
-        event: {},
-      },
-    });
+  async countUserEvents(user: User) {
+    if (user.role == 'OWNER') {
+      return await this.prisma.user.count({
+        where: {
+          role: 'PROMOTER',
+          event: {},
+        },
+      });
+    }
   }
 }

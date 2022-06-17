@@ -32,7 +32,7 @@ export class UserController {
 
   @IsPublic()
   @Get('count')
-  getUserEvent() {
-    return this.userService.countUserEvents();
+  getUserEvent(@CurrentUser() user: User) {
+    return this.userService.countUserEvents(user);
   }
 }
