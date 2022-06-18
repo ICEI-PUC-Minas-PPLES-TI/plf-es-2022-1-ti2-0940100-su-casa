@@ -100,18 +100,27 @@ form label, form legend{
 }
 
 @media screen and (max-width: 907px) {
-	main {
-		flex-direction: column;
-        width: 100vw;
-        justify-content: center;
-        align-items: center;
-	}
+    main {
+        flex-direction: column;
 
-    .sobre, .login {
-        width: 100%;
+    }
+
+    .sobre {
+        justify-content: space-between !important;
+        flex-direction: column;
+        width: fit-content;
+    }
+
+    .sobre > * {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .sobre > img {
+        width: 50%;
     }
 
     .login {
-        padding: 0 0 5rem;
+        width: 100%;
     }
 }
