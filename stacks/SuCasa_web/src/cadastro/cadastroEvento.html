@@ -4,10 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="cadastroEvento.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,8 +16,6 @@
 <body>
     <main>
         
-        
-
         <div class="entrada_campos">
             <label for="nome">
                 Nome
@@ -84,9 +79,40 @@
 
         
 
-         <!-------->
-         <div class="calendar"></div>     
-         <!-------->
+         <!---CALENDARIO INICIO----->
+
+
+
+         <div class="container">
+          <div class="calendar-assets">
+              <h1 id="currentDate"></h1>
+              <div class="field">
+                  <label for="date">Pesquisa por data</label>
+                  <form class="form-input" id="date-search" onsubmit="return setDate(this)">
+                      <input type="date" class="text-field" name="date" id="date" required>
+                      <button type="submit" class="btn btn-small" title="Pesquisar"><i class="fas fa-search"></i></button>
+                  </form>
+              </div>
+              <div class="day-assets">
+                  <button class="btn" onclick="prevDay()" title="Dia anterior"><i class="fas fa-chevron-left"></i> </button>
+                  <button class="btn" onclick="resetDate()" title="Dia atual"><i class="fas fa-calendar-day"></i> Hoje</button>
+                  <button class="btn" onclick="nextDay()" title="Próximo dia"><i class="fas fa-chevron-right"></i> </button>
+              </div>
+          </div>
+          <div class="calendar" id="table">
+              <div class="header">
+                  <!-- Aqui é onde ficará o h1 com o mês e o ano -->
+                  <div class="month" id="month-header">
+  
+                  </div>
+                  <div class="buttons">
+                      <button class="icon" onclick="prevMonth()" title="Mês anterior"><i class="fas fa-chevron-left"></i></button>
+                      <button class="icon" onclick="nextMonth()" title="Próximo mês"><i class="fas fa-chevron-right "></i></button>
+                  </div>
+              </div>
+          </div>
+      </div>
+         <!----CALENDARIO FIM---->
 
         <div class="final">
             <input type="button" value="Finalizar Cadastro">
@@ -100,229 +126,216 @@
 
     </main>
 
+
+
+    <!------------------------------------------------------------------------------------------------->
+    <script src="https://kit.fontawesome.com/812e771e48.js" crossorigin="anonymous"></script>
+    
+    
     <script>
-       
-function CalendarControl() {
-    const calendar = new Date();
-    const calendarControl = {
-      localDate: new Date(),
-      prevMonthLastDate: null,
-      calWeekDays: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
-      calMonthName: [
-        "Janeiro",
-        "Fevereiro",
-        "Março",
-        "Abril",
-        "Maio",
-        "Junho",
-        "Julho",
-        "Agosto",
-        "Setembro",
-        "Outubro",
-        "Novembro",
-        "Dezembro"
-      ],
-      daysInMonth: function (month, year) {
-        return new Date(year, month, 0).getDate();
-      },
-      firstDay: function () {
-        return new Date(calendar.getFullYear(), calendar.getMonth(), 1);
-      },
-      lastDay: function () {
-        return new Date(calendar.getFullYear(), calendar.getMonth() + 1, 0);
-      },
-      firstDayNumber: function () {
-        return calendarControl.firstDay().getDay() + 1;
-      },
-      lastDayNumber: function () {
-        return calendarControl.lastDay().getDay() + 1;
-      },
-      getPreviousMonthLastDate: function () {
-        let lastDate = new Date(
-          calendar.getFullYear(),
-          calendar.getMonth(),
-          0
-        ).getDate();
-        return lastDate;
-      },
-      navigateToPreviousMonth: function () {
-        calendar.setMonth(calendar.getMonth() - 1);
-        calendarControl.attachEventsOnNextPrev();
-      },
-      navigateToNextMonth: function () {
-        calendar.setMonth(calendar.getMonth() + 1);
-        calendarControl.attachEventsOnNextPrev();
-      },
-      navigateToCurrentMonth: function () {
-        let currentMonth = calendarControl.localDate.getMonth();
-        let currentYear = calendarControl.localDate.getFullYear();
-        calendar.setMonth(currentMonth);
-        calendar.setYear(currentYear);
-        calendarControl.attachEventsOnNextPrev();
-      },
-      displayYear: function () {
-        let yearLabel = document.querySelector(".calendar .calendar-year-label");
-        yearLabel.innerHTML = calendar.getFullYear();
-      },
-      displayMonth: function () {
-        let monthLabel = document.querySelector(
-          ".calendar .calendar-month-label"
-        );
-        monthLabel.innerHTML = calendarControl.calMonthName[calendar.getMonth()];
-      },
-      selectDate: function (e) {
-        console.log(
-          `${e.target.textContent} ${
-            calendarControl.calMonthName[calendar.getMonth()]
-          } ${calendar.getFullYear()}`
-        );
-      },
-      plotSelectors: function () {
-        document.querySelector(
-          ".calendar"
-        ).innerHTML += `<div class="calendar-inner"><div class="calendar-controls">
-          <div class="calendar-prev"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><path fill="#666" d="M88.2 3.8L35.8 56.23 28 64l7.8 7.78 52.4 52.4 9.78-7.76L45.58 64l52.4-52.4z"/></svg></a></div>
-          <div class="calendar-year-month">
-          <div class="calendar-month-label"></div>
-          <div>-</div>
-          <div class="calendar-year-label"></div>
-          </div>
-          <div class="calendar-next"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><path fill="#666" d="M38.8 124.2l52.4-52.42L99 64l-7.77-7.78-52.4-52.4-9.8 7.77L81.44 64 29 116.42z"/></svg></a></div>
-          </div>
-          <div class="calendar-today-date">Today: 
-            ${calendarControl.calWeekDays[calendarControl.localDate.getDay()]}, 
-            ${calendarControl.localDate.getDate()}, 
-            ${calendarControl.calMonthName[calendarControl.localDate.getMonth()]} 
-            ${calendarControl.localDate.getFullYear()}
-          </div>
-          <div class="calendar-body"></div></div>`;
-      },
-      plotDayNames: function () {
-        for (let i = 0; i < calendarControl.calWeekDays.length; i++) {
-          document.querySelector(
-            ".calendar .calendar-body"
-          ).innerHTML += `<div>${calendarControl.calWeekDays[i]}</div>`;
-        }
-      },
-      plotDates: function () {
-        document.querySelector(".calendar .calendar-body").innerHTML = "";
-        calendarControl.plotDayNames();
-        calendarControl.displayMonth();
-        calendarControl.displayYear();
-        let count = 1;
-        let prevDateCount = 0;
-  
-        calendarControl.prevMonthLastDate = calendarControl.getPreviousMonthLastDate();
-        let prevMonthDatesArray = [];
-        let calendarDays = calendarControl.daysInMonth(
-          calendar.getMonth() + 1,
-          calendar.getFullYear()
-        );
-        // dates of current month
-        for (let i = 1; i < calendarDays; i++) {
-          if (i < calendarControl.firstDayNumber()) {
-            prevDateCount += 1;
-            document.querySelector(
-              ".calendar .calendar-body"
-            ).innerHTML += `<div class="prev-dates"></div>`;
-            prevMonthDatesArray.push(calendarControl.prevMonthLastDate--);
-          } else {
-            document.querySelector(
-              ".calendar .calendar-body"
-            ).innerHTML += `<div class="number-item" data-num=${count}><a class="dateNumber" href="#">${count++}</a></div>`;
-          }
-        }
-        //remaining dates after month dates
-        for (let j = 0; j < prevDateCount + 1; j++) {
-          document.querySelector(
-            ".calendar .calendar-body"
-          ).innerHTML += `<div class="number-item" data-num=${count}><a class="dateNumber" href="#">${count++}</a></div>`;
-        }
-        calendarControl.highlightToday();
-        calendarControl.plotPrevMonthDates(prevMonthDatesArray);
-        calendarControl.plotNextMonthDates();
-      },
-      attachEvents: function () {
-        let prevBtn = document.querySelector(".calendar .calendar-prev a");
-        let nextBtn = document.querySelector(".calendar .calendar-next a");
-        let todayDate = document.querySelector(".calendar .calendar-today-date");
-        let dateNumber = document.querySelectorAll(".calendar .dateNumber");
-        prevBtn.addEventListener(
-          "click",
-          calendarControl.navigateToPreviousMonth
-        );
-        nextBtn.addEventListener("click", calendarControl.navigateToNextMonth);
-        todayDate.addEventListener(
-          "click",
-          calendarControl.navigateToCurrentMonth
-        );
-        for (var i = 0; i < dateNumber.length; i++) {
-            dateNumber[i].addEventListener(
-              "click",
-              calendarControl.selectDate,
-              false
-            );
-        }
-      },
-      highlightToday: function () {
-        let currentMonth = calendarControl.localDate.getMonth() + 1;
-        let changedMonth = calendar.getMonth() + 1;
-        let currentYear = calendarControl.localDate.getFullYear();
-        let changedYear = calendar.getFullYear();
-        if (
-          currentYear === changedYear &&
-          currentMonth === changedMonth &&
-          document.querySelectorAll(".number-item")
-        ) {
-          document
-            .querySelectorAll(".number-item")
-            [calendar.getDate() - 1].classList.add("calendar-today");
-        }
-      },
-      plotPrevMonthDates: function(dates){
-        dates.reverse();
-        for(let i=0;i<dates.length;i++) {
-            if(document.querySelectorAll(".prev-dates")) {
-                document.querySelectorAll(".prev-dates")[i].textContent = dates[i];
-            }
-        }
-      },
-      plotNextMonthDates: function(){
-       let childElemCount = document.querySelector('.calendar-body').childElementCount;
-       //7 lines
-       if(childElemCount > 42 ) {
-           let diff = 49 - childElemCount;
-           calendarControl.loopThroughNextDays(diff);
-       }
+     const months = [
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outubro",
+    "Novembro",
+    "Dezembro"
+];
 
-       //6 lines
-       if(childElemCount > 35 && childElemCount <= 42 ) {
-        let diff = 42 - childElemCount;
-        calendarControl.loopThroughNextDays(42 - childElemCount);
-       }
+const weekdays = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
 
-      },
-      loopThroughNextDays: function(count) {
-        if(count > 0) {
-            for(let i=1;i<=count;i++) {
-                document.querySelector('.calendar-body').innerHTML += `<div class="next-dates">${i}</div>`;
-            }
+
+
+// Váriavel principal
+let date = new Date();
+
+// Função que retorna a data atual do calendário 
+function getCurrentDate(element, asString) {
+    if (element) {
+        if (asString) {
+            return element.textContent = weekdays[date.getDay()] + ', ' + date.getDate() + " de " + months[date.getMonth()] + " de " + date.getFullYear();
         }
-      },
-      attachEventsOnNextPrev: function () {
-        calendarControl.plotDates();
-        calendarControl.attachEvents();
-      },
-      init: function () {
-        calendarControl.plotSelectors();
-        calendarControl.plotDates();
-        calendarControl.attachEvents();
-      }
-    };
-    calendarControl.init();
-  }
-  
-  const calendarControl = new CalendarControl();
+        return element.value = date.toISOString().substr(0, 10);
+    }
+    return date;
+}
+
+
+// Função principal que gera o calendário
+function generateCalendar() {
+
+    // Pega um calendário e se já existir o remove
+    const calendar = document.getElementById('calendar');
+    if (calendar) {
+        calendar.remove();
+    }
+
+    // Cria a tabela que será armazenada as datas
+    const table = document.createElement("table");
+    table.id = "calendar";
+
+    // Cria os headers referentes aos dias da semana
+    const trHeader = document.createElement('tr');
+    trHeader.className = 'weekends';
+    weekdays.map(week => {
+        const th = document.createElement('th');
+        const w = document.createTextNode(week.substring(0, 3));
+        th.appendChild(w);
+        trHeader.appendChild(th);
+    });
+
+    // Adiciona os headers na tabela
+    table.appendChild(trHeader);
+
+    //Pega o dia da semana do primeiro dia do mês
+    const weekDay = new Date(
+        date.getFullYear(),
+        date.getMonth(),
+        1
+    ).getDay();
+
+    //Pega o ultimo dia do mês
+    const lastDay = new Date(
+        date.getFullYear(),
+        date.getMonth() + 1,
+        0
+    ).getDate();
+
+    let tr = document.createElement("tr");
+    let td = '';
+    let empty = '';
+    let btn = document.createElement('button');
+    let week = 0;
+
+    // Se o dia da semana do primeiro dia do mês for maior que 0(primeiro dia da semana);
+    while (week < weekDay) {
+        td = document.createElement("td");
+        empty = document.createTextNode(' ');
+        td.appendChild(empty);
+        tr.appendChild(td);
+        week++;
+    }
+
+    // Vai percorrer do 1º até o ultimo dia do mês
+    for (let i = 1; i <= lastDay;) {
+        // Enquanto o dia da semana for < 7, ele vai adicionar colunas na linha da semana
+        while (week < 7) {
+            td = document.createElement('td');
+            let text = document.createTextNode(i);
+            btn = document.createElement('button');
+            btn.className = "btn-day";
+            btn.addEventListener('click', function () { changeDate(this) });
+            week++;
+
+
+
+            // Controle para ele parar exatamente no ultimo dia
+            if (i <= lastDay) {
+                i++;
+                btn.appendChild(text);
+                td.appendChild(btn)
+            } else {
+                text = document.createTextNode(' ');
+                td.appendChild(text);
+            }
+            tr.appendChild(td);
+        }
+        // Adiciona a linha na tabela
+        table.appendChild(tr);
+
+        // Cria uma nova linha para ser usada
+        tr = document.createElement("tr");
+
+        // Reseta o contador de dias da semana
+        week = 0;
+    }
+    // Adiciona a tabela a div que ela deve pertencer
+    const content = document.getElementById('table');
+    content.appendChild(table);
+    changeActive();
+    changeHeader(date);
+    document.getElementById('date').textContent = date;
+    getCurrentDate(document.getElementById("currentDate"), true);
+    getCurrentDate(document.getElementById("date"), false);
+}
+
+// Altera a data atráves do formulário
+function setDate(form) {
+    let newDate = new Date(form.date.value);
+    date = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate() + 1);
+    generateCalendar();
+    return false;
+}
+
+// Método Muda o mês e o ano do topo do calendário
+function changeHeader(dateHeader) {
+    const month = document.getElementById("month-header");
+    if (month.childNodes[0]) {
+        month.removeChild(month.childNodes[0]);
+    }
+    const headerMonth = document.createElement("h1");
+    const textMonth = document.createTextNode(months[dateHeader.getMonth()].substring(0, 3) + " " + dateHeader.getFullYear());
+    headerMonth.appendChild(textMonth);
+    month.appendChild(headerMonth);
+}
+
+// Função para mudar a cor do botão do dia que está ativo
+function changeActive() {
+    let btnList = document.querySelectorAll('button.active');
+    btnList.forEach(btn => {
+        btn.classList.remove('active');
+    });
+    btnList = document.getElementsByClassName('btn-day');
+    for (let i = 0; i < btnList.length; i++) {
+        const btn = btnList[i];
+        if (btn.textContent === (date.getDate()).toString()) {
+            btn.classList.add('active');
+        }
+    }
+}
+
+// Função que pega a data atual
+function resetDate() {
+    date = new Date();
+    generateCalendar();
+}
+
+// Muda a data pelo numero do botão clicado
+function changeDate(button) {
+    let newDay = parseInt(button.textContent);
+    date = new Date(date.getFullYear(), date.getMonth(), newDay);
+    generateCalendar();
+}
+
+// Funções de avançar e retroceder mês e dia
+function nextMonth() {
+    date = new Date(date.getFullYear(), date.getMonth() + 1, 1);
+    generateCalendar(date);
+}
+
+function prevMonth() {
+    date = new Date(date.getFullYear(), date.getMonth() - 1, 1);
+    generateCalendar(date);
+}
+
+
+function prevDay() {
+    date = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1);
+    generateCalendar();
+}
+
+function nextDay() {
+    date = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+    generateCalendar();
+}
+
+document.onload = generateCalendar(date);
 
     </script>
 </body>
