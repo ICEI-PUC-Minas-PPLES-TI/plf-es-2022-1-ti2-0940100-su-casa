@@ -1,0 +1,30 @@
+/* header */
+header{
+    background-color: #8b4869;
+    padding-block-end: 0.5cm;
+    padding-top: 0.5cm;
+}
+
+
+#titulo_pagina {
+    padding-top: 20px;
+    display: inline;
+    color: #f4e9ed;
+}
+/* header */
+
+/* body */
+.camposForm {
+    font-weight: bolder;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+::placeholder {
+    color: #f4e9ed !important;
+    opacity: 3;
+}
+
+#btnActions{
+    padding: 20px;
+}
