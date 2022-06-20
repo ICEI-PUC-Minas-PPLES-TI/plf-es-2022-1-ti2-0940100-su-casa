@@ -31,4 +31,22 @@ export class EventController {
   getCancel() {
     return this.eventService.countCanceledEvents();
   }
+
+  @IsPublic()
+  @Get('staff')
+  countStaffEvents(@CurrentUser() user: User) {
+    return this.eventService.countStaffEvents();
+  }
+
+  @IsPublic()
+  @Get('number')
+  getEventNumber(@CurrentUser() user: User) {
+    return this.eventService.getEventNumber();
+  }
+
+  @IsPublic()
+  @Get('recurrence')
+  getRecurrence(@CurrentUser() user: User) {
+    return this.eventService.getRecurrence();
+  }
 }
