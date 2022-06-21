@@ -1,50 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="utf-8">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Indicadores - SU CASA</title>
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="indicadores.css" />
+  </head>
+  <body>
+    <nav>
+      <img src="" alt="logo" />
+      <a href="../login/login.html">Sair</a>
+    </nav>
 
-<head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="../styles/reset.css">
-    <link rel="stylesheet" href="../cadastro/pagCadastro.css">
-    <script>
-
-
-        google.charts.load('current', { 'packages': ['corechart'] });
-
-        function desenharPizza() {
-
-            var tabela = new google.visualization.DataTable();
-            tabela.addColumn('string', 'categorias');
-            tabela.addColumn('number', 'valores');
-            tabela.addRows([
-
-                ['Staff', 5],
-                ['Cancelamento', 2],
-                ['Recorrencia', 4],
-                ['Desinteresse', 5]
-            ]);
-
-            var grafico = new google.visualization.PieChart(document.getElementById('graficoPizza'));
-            grafico.draw(tabela);
-        }
-
-        google.charts.setOnLoadCallback(desenharPizza);
-
-
-    </script>
-</head>
-
-<body>
     <main>
-        <div class="sobre">
-            <div id="graficoPizza"></div>
-        </div>
-    </main>
-</body>
+      <div class="indicador">
+        <span>Taxa de satisfação</span>
+        <canvas id="myChart"></canvas>
+        <p>Quantidade média de avaliações</p>
+      </div>
 
+      <div class="indicador">
+        <span>Taxa de utilização de staff</span>
+        <canvas id="myChart2"></canvas>
+        <p>Uso de staffs nos eventos</p>
+      </div>
+
+      <div class="indicador">
+        <span>Taxa de cancelamento</span>
+        <canvas id="myChart3"></canvas>
+        <p>Eventos cancelados</p>
+      </div>
+
+      <div class="indicador">
+        <span>Taxa de recorrência</span>
+        <canvas id="myChart4"></canvas>
+        <p>Usuários recorrentes</p>
+      </div>
+
+      <div class="indicador">
+        <span>Taxa de desinteresse</span>
+        <canvas id="myChart5"></canvas>
+        <p>Usuários que nunca locaram o espaço</p>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      function factoryChart(id, options) {
+        new Chart(document.getElementById(id), options);
+      }
+
+      this.factoryChart("myChart", {
+        type: "bar",
+        data: {
+            labels: [''],
+            datasets: [
+                {
+                    label: '',
+                    data: [1] /* valor do back */ ,
+                    backgroundColor: 'purple',
+                }
+            ]
+        },
+        options: {
+          indexAxis: "y",
+          responsive: true,
+          scales: {
+            xAxis: {
+                min: 0,
+                max: 5
+            }
+          }
+        },
+      });
+
+      this.factoryChart("myChart2", {
+        type: "bar",
+        data: {
+            labels: [''],
+            datasets: [
+                {
+                    label: '',
+                    data: [1] /* valor do back */ ,
+                    backgroundColor: 'purple',
+                }
+            ]
+        },
+        options: {
+          indexAxis: "y",
+          responsive: true,
+          scales: {
+            xAxis: {
+                min: 0,
+                max: 10
+            }
+          }
+        },
+      });
+
+      this.factoryChart("myChart3", {
+        type: "bar",
+        data: {
+            labels: [''],
+            datasets: [
+                {
+                    label: '',
+                    data: [1] /* valor do back */ ,
+                    backgroundColor: 'purple',
+                }
+            ]
+        },
+        options: {
+          indexAxis: "y",
+          responsive: true,
+          scales: {
+            xAxis: {
+                min: 0,
+                max: 10
+            }
+          }
+        },
+      });
+
+      this.factoryChart("myChart4", {
+        type: "bar",
+        data: {
+            labels: [''],
+            datasets: [
+                {
+                    label: '',
+                    data: [1] /* valor do back */ ,
+                    backgroundColor: 'purple',
+                }
+            ]
+        },
+        options: {
+          indexAxis: "y",
+          responsive: true,
+          scales: {
+            xAxis: {
+                min: 0,
+                max: 10
+            }
+          }
+        },
+      });
+
+      this.factoryChart("myChart5", {
+        type: "bar",
+        data: {
+            labels: [''],
+            datasets: [
+                {
+                    label: '',
+                    data: [1] /* valor do back */ ,
+                    backgroundColor: 'purple',
+                }
+            ]
+        },
+        options: {
+          indexAxis: "y",
+          responsive: true,
+          scales: {
+            xAxis: {
+                min: 0,
+                max: 10
+            }
+          }
+        },
+      });
+    </script>
+  </body>
 </html>
