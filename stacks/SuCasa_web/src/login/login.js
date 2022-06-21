@@ -1,20 +1,25 @@
-function login() {
-    const email = document.getElementById('email').value;
-    const senha = document.getElementById('senha').value;
+async function login() {
+    const email = document.getElementById('email');
+    const senha = document.getElementById('senha');
 
 
-    fetch('http://localhost:3000/login', {
+    const accessToken = await fetch('http://localhost:3000/login', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         },
         method: 'POST',
         body: JSON.stringify({
-            email: 'owner@gmail.com',
-            password: '123@Sm'
+            email: email.value,
+            password: senha.value
         })
     })
         .then(res => {
-            console.log(res)
+            return res.json()
         })
+        .then(data => {
+            return data
+        })
+
+    localStorage.setItem('access_token', accessToken.access_token);
 }

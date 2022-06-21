@@ -1,13 +1,23 @@
-function singup() {
-    fetch('http://localhost:3000/user', {
+function cadastroStaff() {
+    const whatsapp = document.getElementById('whatsapp');
+    const numero = document.getElementById('numero');
+    const capacidade = document.getElementById('capacidade');
+    const tamanho = document.getElementById('tamanho');
+    const banheiros = document.getElementById('banheiros');
+
+    fetch('http://localhost:3000/staff', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+        },
         method: 'POST',
-        headers: { 'conContent-Type': 'application/json' },
         body: JSON.stringify({
-            name: "test",
-            email: "sathmory@gmail.com",
-            phone: "31 9 9548-4328",
-            password: "123@Sm",
-            role: "PROMOTER"
+            whatsapp: "test",
+            minConvidados: "sathmory@gmail.com",
+            minConvidados: "31 9 9548-4328",
+            price: "123@Sm",
+            description: "PROMOTER"
         })
     })
         .then(res => {

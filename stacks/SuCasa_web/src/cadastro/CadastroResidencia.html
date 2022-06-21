@@ -30,45 +30,51 @@
     <div class="cadastro" style="overflow: auto !important; padding-top: 3rem">
         <form>
 
-            <label for="Cep">CEP</label>
+            <label for="CEP">CEP</label>
             <input type="number" id="CEP" class="input-padrao" required>
 
             <label for="numero">Número</label>
-            <input type="number" id="número" class="input-padrao" required>
+            <input type="number" id="numero" class="input-padrao" required>
 
-            <label for="nome">Capacidade MAX de pessoas:</label>
-            <input type="text" id="Capacidade" class="input-padrao" required>
+            <label for="capacidade">Capacidade MAX de pessoas:</label>
+            <input type="text" id="capacidade" class="input-padrao" required>
 
-            <label for="email">Tamanho do local</label>
-            <input type="number" id="Tamanho" class="input-padrao" required>
+            <label for="tamanho">Tamanho do local</label>
+            <input type="number" id="tamanho" class="input-padrao" required>
 
-            <label for="telefone">Número de banheiro:</label>
+            <label for="banheiros">Número de banheiro:</label>
             <input type="number" id="banheiros" class="input-padrao" required>
-            <label for="conf">Valor por Dia</label>
-            <input type="number" id="" class="input-padrao" required>
+            <label for="valor">Valor por Dia</label>
+            <input type="number" id="valor" class="input-padrao" required>
 
             <fieldset>
                 <legend>Disponibilidade</legend>
                 <div class="datas">
                     <label><br>
-                        Sábado:
-                        <input name="dias" type="checkbox" id="dias" /></label>
-                    <label><br>
                         Domingo:
-                        <input name="dias" type="checkbox" id="dias" /></label>
+                        <input name="dias" type="checkbox" id="domingo" /></label>
+                    <label><br>
+                        Segunda-feira:
+                         <input name="dias" type="checkbox" id="segunda" /></label>
+                    <label><br>
+                        Terça-feira:
+                        <input name="dias" type="checkbox" id="terca" /></label>
                     <label><br>
                         Quarta-feira:
-                        <input name="dias" type="checkbox" id="dias" /></label>
+                        <input name="dias" type="checkbox" id="quarta" /></label>
                     <label><br>
                         Quinta-feira:
-                        <input name="dias" type="checkbox" id="dias" /></label>
+                        <input name="dias" type="checkbox" id="quinta" /></label>
                     <label><br>
                         Sexta-feira:
-                        <input name="dias" type="checkbox" id="dias" /></label>
+                        <input name="dias" type="checkbox" id="sexta" /></label>
+                    <label><br>
+                    Sábado:
+                    <input name="dias" type="checkbox" id="sabado" /></label>
                 </div>
             </fieldset>
 
-            <input type="submit" value="Cadastrar" class="enviar">
+            <input type="submit" value="Cadastrar" class="enviar" onclick="cadastrarResidencia()">
         </form>
     </div>
 </main>
