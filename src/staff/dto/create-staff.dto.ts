@@ -4,9 +4,6 @@ import { BuffetType } from '.prisma/client';
 
 export class CreateStaffDto extends Staff {
   @IsString()
-  userStaffId: string;
-
-  @IsString()
   whatsapp: string;
 
   @IsNumber()
