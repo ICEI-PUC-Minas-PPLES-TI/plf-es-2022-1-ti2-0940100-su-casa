@@ -9,10 +9,10 @@ import { IsPublic } from 'src/auth/decorators/is-public.decorator';
 export class StaffController {
   constructor(private readonly staffService: StaffService) {}
 
-  // @Post()
-  // create(@Body() createStaffDto: CreateStaffDto, @CurrentUser() user: User) {
-  //   return this.staffService.create(createStaffDto, user);
-  // }
+  @Post()
+  create(@Body() createStaffDto: CreateStaffDto, @CurrentUser() user: User) {
+    return this.staffService.create(createStaffDto, user);
+  }
 
   @IsPublic()
   @Post()
