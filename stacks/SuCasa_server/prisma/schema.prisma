@@ -5,6 +5,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model User {
@@ -15,8 +16,8 @@ model User {
   phone     String
   role      Role
   event     Event[]
-  residence Residence[]
-  staff     Staff[]
+  residence Residence?
+  staff     Staff?
   evaluation Evaluation?
 }
 
@@ -41,13 +42,14 @@ model Residence {
 }
 
 model Staff {
-  userStaffId   String  @id
+  id            String        @id @default(uuid())
+  userId   String
   whatsapp      String?
   minConvidados Int
   maxConvidados Int
   description   String
   tipoBuffet    BuffetType
-  userStaff     User        @relation(fields: [userStaffId], references: [id])
+  userStaff     User        @relation(fields: [userId], references: [id])
   event         Event[]
 }
 
@@ -63,7 +65,7 @@ model Event {
   promoter      User        @relation(fields: [promoterId], references: [id])
   residence     Residence   @relation(fields: [residenceId], references: [id])
   status        String
-  staff         Staff       @relation(fields: [staffId], references: [userStaffId])
+  staff         Staff       @relation(fields: [staffId], references: [id])
 }
 
 model Evaluation {
