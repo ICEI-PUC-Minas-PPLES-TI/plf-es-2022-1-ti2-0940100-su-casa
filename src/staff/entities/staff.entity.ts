@@ -1,5 +1,5 @@
 export class Staff {
-  userStaffId: string;
+  userStaffId?: string;
   whatsapp: string;
   description: string;
   minConvidados: number;
