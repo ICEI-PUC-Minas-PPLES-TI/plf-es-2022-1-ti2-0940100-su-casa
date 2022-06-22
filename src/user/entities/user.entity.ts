@@ -3,7 +3,7 @@ import { Residence } from '../../residence/entities/residence.entity';
 import { Evaluation } from '../../evaluation/entities/evaluation.entity';
 
 export class User {
-  id?: string;
+  id: string;
   email: string;
   password: string;
   name: string;

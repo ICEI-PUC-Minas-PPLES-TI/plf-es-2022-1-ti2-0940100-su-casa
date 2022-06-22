@@ -46,8 +46,8 @@ model Staff {
   whatsapp      String?
   minConvidados Int
   maxConvidados Int
-  price         Int
   description   String
+  tipoBuffet    BuffetType
   userStaff     User        @relation(fields: [userStaffId], references: [id])
   event         Event[]
 }
