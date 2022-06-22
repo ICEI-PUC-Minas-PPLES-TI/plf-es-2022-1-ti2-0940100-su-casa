@@ -10,17 +10,17 @@ export class StaffService {
   }
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(createStaffDto: CreateStaffDto, user: User) {
-    if (user.role == 'STAFF') {
-      const data = {
-        ...createStaffDto,
-        userId: user.id,
-        userStaff: user,
-      };
-
-      return await this.prisma.staff.create({ data });
-    } else {
-      throw new Error('Your account permissions are not alowed');
-    }
-  }
+  // async create(createStaffDto: CreateStaffDto, user: User) {
+  //   if (user.role == 'STAFF') {
+  //     const data = {
+  //       ...createStaffDto,
+  //       userId: user.id,
+  //       userStaff: user,
+  //     };
+  //
+  //     return await this.prisma.staff.create({ data });
+  //   } else {
+  //     throw new Error('Your account permissions are not alowed');
+  //   }
+  // }
 }
