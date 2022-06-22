@@ -17,6 +17,8 @@ export class StaffService {
       const data = {
         ...createStaffDto,
         userId: user.id,
+        userStaff: user,
+        price: 10,
       };
 
       return await this.prisma.staff.create({ data });
