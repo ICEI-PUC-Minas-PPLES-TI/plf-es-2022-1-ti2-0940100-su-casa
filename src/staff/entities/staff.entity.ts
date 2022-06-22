@@ -1,7 +1,7 @@
 import { User } from '../../user/entities/user.entity';
 
 export class Staff {
-  userStaffId: string;
+  userId: string;
   whatsapp: string;
   description: string;
   minConvidados: number;

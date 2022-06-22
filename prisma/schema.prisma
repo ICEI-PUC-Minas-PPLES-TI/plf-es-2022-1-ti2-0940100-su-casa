@@ -16,8 +16,8 @@ model User {
   phone     String
   role      Role
   event     Event[]
-  residence Residence[]
-  staff     Staff[]
+  residence Residence?
+  staff     Staff?
   evaluation Evaluation?
 }
 
@@ -43,13 +43,13 @@ model Residence {
 
 model Staff {
   id            String        @id @default(uuid())
-  userStaffId   String
+  userId   String
   whatsapp      String?
   minConvidados Int
   maxConvidados Int
   description   String
   tipoBuffet    BuffetType
-  userStaff     User        @relation(fields: [userStaffId], references: [id])
+  userStaff     User        @relation(fields: [userId], references: [id])
   event         Event[]
 }
 
