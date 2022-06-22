@@ -1,7 +1,11 @@
 import { IsNumber, IsString } from 'class-validator';
 import { Staff } from '../entities/staff.entity';
+import { BuffetType } from '.prisma/client';
 
 export class CreateStaffDto extends Staff {
+  @IsString()
+  userStaffId: string;
+
   @IsString()
   whatsapp: string;
 
@@ -15,5 +19,5 @@ export class CreateStaffDto extends Staff {
   description: string;
 
   @IsString()
-  tipoBuffet: string;
+  tipoBuffet: BuffetType;
 }
