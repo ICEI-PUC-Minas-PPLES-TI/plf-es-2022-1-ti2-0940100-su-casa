@@ -11,7 +11,7 @@ export class StaffController {
 
   @Post()
   create(@Body() createStaffDto: CreateStaffDto, @CurrentUser() user: User) {
-    return this.staffService.create(createStaffDto, user);
+    return this.staffService.create(createStaffDto, user.id, user.role);
   }
 
   @IsPublic()
