@@ -42,7 +42,8 @@ model Residence {
 }
 
 model Staff {
-  userStaffId   String  @id
+  id            String        @id @default(uuid())
+  userStaffId   String
   whatsapp      String?
   minConvidados Int
   maxConvidados Int
@@ -64,7 +65,7 @@ model Event {
   promoter      User        @relation(fields: [promoterId], references: [id])
   residence     Residence   @relation(fields: [residenceId], references: [id])
   status        String
-  staff         Staff       @relation(fields: [staffId], references: [userStaffId])
+  staff         Staff       @relation(fields: [staffId], references: [id])
 }
 
 model Evaluation {
