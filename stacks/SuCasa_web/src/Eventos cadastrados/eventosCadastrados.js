@@ -22,7 +22,7 @@ function cadastroEvento() {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
-        }, method: 'Post',
+        }, method: 'Get',
         body: JSON.stringify({
           promoterId: '',
           nome: nome.value,
