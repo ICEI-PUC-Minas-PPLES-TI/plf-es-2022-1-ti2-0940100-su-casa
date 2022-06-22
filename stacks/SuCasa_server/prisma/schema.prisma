@@ -43,7 +43,7 @@ model Residence {
 
 model Staff {
   id            String        @id @default(uuid())
-  userId   String
+  userId        String
   whatsapp      String?
   minConvidados Int
   maxConvidados Int

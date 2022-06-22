@@ -11,8 +11,8 @@ export class CreateStaffDto extends Staff {
   @IsNumber()
   maxConvidados: number;
 
-  @IsNumber()
-  price: number;
+  @IsString()
+  userId: string;
 
   @IsString()
   description: string;
