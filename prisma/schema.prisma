@@ -1,0 +1,98 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String     @id @default(uuid())
+  email     String     @unique
+  name      String     @unique
+  password  String
+  phone     String
+  role      Role
+  event     Event[]
+  residence Residence[]
+  staff     Staff[]
+  evaluation Evaluation?
+}
+
+model Residence {
+  id           String     @id @default(uuid())
+  description  String?
+  cep          String
+  estado       String
+  cidade       String
+  rua          String
+  numero       String
+  bairro       String
+  numCapacity  Int
+  tamLocal     Int
+  numToilet    Int
+  availability String
+  ownerId      String
+  price        Int?
+  owner        User         @relation(fields: [ownerId], references: [id])
+  evaluation   Evaluation[]
+  event        Event[]
+}
+
+model Staff {
+  userStaffId   String  @id
+  whatsapp      String?
+  minConvidados Int
+  maxConvidados Int
+  price         Int
+  description   String
+  userStaff     User        @relation(fields: [userStaffId], references: [id])
+  event         Event[]
+}
+
+model Event {
+  id            String      @id @default(uuid())
+  duration      Int
+  numGuests     Int
+  assignedAt    String      @unique
+  staffName     String
+  promoterId    String
+  residenceId   String
+  staffId       String
+  promoter      User        @relation(fields: [promoterId], references: [id])
+  residence     Residence   @relation(fields: [residenceId], references: [id])
+  status        String
+  staff         Staff       @relation(fields: [staffId], references: [userStaffId])
+}
+
+model Evaluation {
+  id            String   @id @default(uuid())
+  residenceId   String
+  userId        String
+  grade         Int
+  description   String
+  residence     Residence @relation(fields: [residenceId], references: [id])
+  user          User      @relation(fields: [userId], references: [id])
+}
+
+enum Role {
+  OWNER
+  PROMOTER
+  STAFF
+}
+
+enum BuffetType {
+   BUTECO
+   SUSHI
+   CHURRASCO
+   BAR
+}
+
+enum Payment {
+  DEBIT
+  CREDIT
+  PIX
+  TICKET
+  IN_CASH
+}
