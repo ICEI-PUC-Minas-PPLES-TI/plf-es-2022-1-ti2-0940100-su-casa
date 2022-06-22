@@ -14,7 +14,6 @@ export class StaffService {
     if (user.role == 'STAFF') {
       const data = {
         ...createStaffDto,
-        user: user,
       };
 
       return await this.prisma.staff.create({ data });
