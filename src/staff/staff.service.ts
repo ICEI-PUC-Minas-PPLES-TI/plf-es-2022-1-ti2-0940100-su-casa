@@ -11,15 +11,10 @@ export class StaffService {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(createStaffDto: CreateStaffDto, user: User) {
-    const staffUser = await this.prisma.user.findUnique({
-      where: {
-        id: user.id,
-      },
-    });
     if (user.role == 'STAFF') {
       const data = {
         ...createStaffDto,
-        userStaffId: staffUser.id,
+        userStaffId: user.id,
       };
 
       return await this.prisma.staff.create({ data });
