@@ -48,9 +48,74 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-      function factoryChart(id, options) {
+      async function factoryChart(id, options) {
         new Chart(document.getElementById(id), options);
       }
+
+      const taxaRecorrencia = await fetch('http://localhost:3000/event/recurrence', {
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                  'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+                },
+                method: 'GET',
+              }).then(res => {
+                return res
+              }). then(data => {
+                return data
+              })
+
+      const taxaUtilStaff = await fetch('http://localhost:3000/event/staff', {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+        },
+        method: 'GET',
+      }).then(res => {
+        return res
+      }). then(data => {
+        return data
+      })
+
+      const taxaCancelamento = await fetch('http://localhost:3000/event/cancel', {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+        },
+        method: 'GET',
+      }).then(res => {
+        return res
+      }). then(data => {
+        return data
+      })
+
+      const taxaSatisfacao = await fetch('http://localhost:3000/user/evaluation/avg', {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+        },
+        method: 'GET',
+      }).then(res => {
+        return res
+      }). then(data => {
+        return data
+      })
+
+      const taxaDesinteresse = await fetch('http://localhost:3000/user/count', {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+        },
+        method: 'GET',
+      }).then(res => {
+        return res
+      }). then(data => {
+        return data
+      })
 
       this.factoryChart("myChart", {
         type: "bar",
