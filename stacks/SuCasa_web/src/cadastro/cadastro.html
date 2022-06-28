@@ -47,7 +47,6 @@
                     <label for="radio-promoter"><input type="radio" name="contato" value="promoter" id="radio-promoter">Promotor</label>
                   </div>
               </fieldset>
-              
               <input type="submit" value="Cadastrar" class="enviar" onclick="singup()">
             </form>
             <script src="cadastro.js"></script>
@@ -57,4 +56,23 @@
     </body>
 </html>
     
+<script>
+  function singup(){
+    var dono = document.getElementById('radio-dono')[0].value;
+    var promoter = document.getElementById('radio-promoter')[0].value;
+    var staff = document.getElementById('radio-staff')[0].value;
+    var senha= document.getElementsById('senha')[0].value;
+    senha=senha.toLowerCase();
+    if(dono == "" && senha == ""){
+      window.location='../paginicial/paginaInicialVisaoAdm.html'
+    }
+    else if(staff == "" & senha == "" ){
+      window.location='../paginicial/paginaInicialVisaoStaff.html'
+    }
+    else if(promoter == "" && senha == ""){
+      window.location="/paginicial/paginaInicialVisaoPromoter.html"
+    }
 
+  }
+</script>
+    

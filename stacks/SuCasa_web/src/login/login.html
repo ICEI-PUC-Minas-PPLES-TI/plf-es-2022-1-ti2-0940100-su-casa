@@ -32,10 +32,8 @@
                   <input type="senha" id="senha" class="input-padrao" required>
 
                   <p>Não possui conta? <a class="link-login" target="_blank" href="../cadastro/cadastro.html">Clique aqui.</a></p>
-
-                  <input type="submit" value="Entrar" class="enviar" onclick="(accesToken) => login()">
-
-                  <p id="demo"></p>
+                <input type="submit" value="Entrar" class="enviar" onclick="(accesToken) => login()">
+                   <p id="demo"></p>
             </form>
             <script src="login.js"></script>
           </div>
@@ -45,3 +43,23 @@
   </html>
     
 </body>
+<script>
+  function login(){
+    var dono = document.getElementById('radio-dono')[0].value;
+    var promoter = document.getElementById('radio-promoter')[0].value;
+    var staff = document.getElementById('radio-staff')[0].value;
+    var senha= document.getElementsById('senha')[0].value;
+    senha=senha.toLowerCase();
+    if(dono == "" && senha == ""){
+      window.location='../paginicial/paginaInicialVisaoAdm.html'
+    }
+    else if(staff == "" & senha == "" ){
+      window.location='../paginicial/paginaInicialVisaoStaff.html'
+    }
+    else if(promoter == "" && senha == ""){
+      window.location="/paginicial/paginaInicialVisaoPromoter.html"
+    }
+
+  }
+</script>
+    
