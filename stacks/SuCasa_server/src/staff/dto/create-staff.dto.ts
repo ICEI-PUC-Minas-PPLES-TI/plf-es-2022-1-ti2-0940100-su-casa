@@ -1,5 +1,6 @@
 import { IsNumber, IsString } from 'class-validator';
 import { Staff } from '../entities/staff.entity';
+import { BuffetType } from '.prisma/client';
 
 export class CreateStaffDto extends Staff {
   @IsString()
@@ -12,8 +13,8 @@ export class CreateStaffDto extends Staff {
   maxConvidados: number;
 
   @IsString()
-  userId: string;
+  description: string;
 
   @IsString()
-  description: string;
+  tipoBuffet: BuffetType;
 }

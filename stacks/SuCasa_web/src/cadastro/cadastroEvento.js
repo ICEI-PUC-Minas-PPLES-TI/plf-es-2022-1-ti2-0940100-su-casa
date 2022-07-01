@@ -1,5 +1,5 @@
 function cadastroEvento() {
-    const nome =document.getElementById("Nome");
+    const nome = document.getElementById("Nome");
     const whatsapp = document.getElementById("whatsapp");
     const numero = document.getElementById("num_convidado");
     const duracao = document.getElementById("duracao");

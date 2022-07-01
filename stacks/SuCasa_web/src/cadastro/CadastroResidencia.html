@@ -74,7 +74,7 @@
                 </div>
             </fieldset>
 
-            <a href="../paginicial/paginaInicialVisaoAdm.html"><input type="submit" value="Cadastrar" class="enviar" onclick="cadastrarResidencia()"></a>
+            <a href="../paginicial/paginaInicialVisaoAdm.html"><input id="submit" type="submit" value="Cadastrar" class="enviar" onclick="cadastrarResidencia()"></a>
         </form>
     </div>
 </main>
@@ -87,6 +87,12 @@
             image.src = URL.createObjectURL(file)
         }
     }
+
+
+        document.getElementById('submit').addEventListener("submit", function(event) {
+        event.preventDefault();
+    })
+
 </script>
 </body>
 

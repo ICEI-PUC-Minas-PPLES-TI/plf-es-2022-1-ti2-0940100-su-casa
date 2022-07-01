@@ -30,7 +30,7 @@ async function cadastrarResidencia() {
     if (sabado.checked)
         availability = availability + 'sabado,';
 
-    const endereco = await fetch('http://viacep.com.br/ws/' + CEP.value + '/json/', {
+    const address = await fetch('https://ws.apicep.com/cep/' + CEP.value + '.json', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ async function cadastrarResidencia() {
             return data
         })
 
-    fetch('http://localhost:3000/residence', {
+    await fetch('http://localhost:3000/residence', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -54,11 +54,11 @@ async function cadastrarResidencia() {
         body: JSON.stringify({
             ownerId: '',
             cep: CEP.value,
-            estado: endereco.uf,
-            cidade: endereco.localidade,
-            rua: endereco.logradouro,
+            estado: address.uf,
+            cidade: address.localidade,
+            rua: address.logradouro,
             numero: numero.value,
-            bairro: endereco.bairro,
+            bairro: address.bairro,
             numCapacity: +capacidade.value,
             tamLocal: +tamanho.value,
             numToilet: +banheiros.value,

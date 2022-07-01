@@ -1,5 +1,5 @@
 function cadastroEvento() {
-    const nome =document.getElementById("Nome");
+    const nome = document.getElementById("Nome");
     const whatsapp = document.getElementById("whatsapp");
     const numero = document.getElementById("num_convidado");
     const duracao = document.getElementById("duracao");
@@ -31,9 +31,10 @@ function cadastroEvento() {
           duracao: duracao.value,
           servico: servico.value,
           availability: availability,
-        })  .then(res => {
-            return res.json();
         })
-        .then(data => console.log(data))
     })
+        .then(res => {
+        return res.json();
+    })
+        .then(data => console.log(data))
 }
