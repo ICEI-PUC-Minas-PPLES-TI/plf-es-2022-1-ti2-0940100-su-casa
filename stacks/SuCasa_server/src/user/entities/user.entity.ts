@@ -1,4 +1,4 @@
-import { Role } from '.prisma/client';
+import { Role } from 'prisma';
 import { Residence } from '../../residence/entities/residence.entity';
 import { Evaluation } from '../../evaluation/entities/evaluation.entity';
 

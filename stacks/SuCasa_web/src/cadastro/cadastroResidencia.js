@@ -13,6 +13,10 @@ async function cadastrarResidencia() {
     const sexta = document.getElementById('sexta');
     const sabado = document.getElementById('sabado');
 
+    document.getElementById('form1').addEventListener("submit",function(e) {
+        e.preventDefault(); // stop submission
+    })
+
     var availability = '';
 
     if (domingo.checked)
@@ -43,6 +47,8 @@ async function cadastrarResidencia() {
         .then(data => {
             return data
         })
+    let rua = address.address.split(' - ');
+
 
     await fetch('http://localhost:3000/residence', {
         headers: {
@@ -54,15 +60,16 @@ async function cadastrarResidencia() {
         body: JSON.stringify({
             ownerId: '',
             cep: CEP.value,
-            estado: address.uf,
-            cidade: address.localidade,
-            rua: address.logradouro,
+            estado: address.state,
+            cidade: 'belo horizonte',
+            rua: rua[0],
             numero: numero.value,
-            bairro: address.bairro,
+            bairro: 'sagrada familia',
             numCapacity: +capacidade.value,
             tamLocal: +tamanho.value,
             numToilet: +banheiros.value,
             availability: availability
         })
     })
+    window.location.pathname = "plf-es-2022-1-ti2-0940100-su-casa/stacks/SuCasa_web/src/paginicial/paginaInicialVisaoAdm.html"
 }

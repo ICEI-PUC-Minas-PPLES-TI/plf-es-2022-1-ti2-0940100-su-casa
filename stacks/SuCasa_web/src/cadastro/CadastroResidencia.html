@@ -28,7 +28,7 @@
     </div>
 
     <div class="cadastro" style="overflow: auto !important; padding-top: 3rem">
-        <form>
+        <form id="form1">
 
             <label for="CEP">CEP</label>
             <input type="number" id="CEP" class="input-padrao" required>
@@ -74,7 +74,8 @@
                 </div>
             </fieldset>
 
-            <a href="../paginicial/paginaInicialVisaoAdm.html"><input id="submit" type="submit" value="Cadastrar" class="enviar" onclick="cadastrarResidencia()"></a>
+            <input id="submit" type="submit" value="Cadastrar" class="enviar" onclick="cadastrarResidencia()">
+            <script src="cadastroResidencia.js"></script>
         </form>
     </div>
 </main>
@@ -87,11 +88,6 @@
             image.src = URL.createObjectURL(file)
         }
     }
-
-
-        document.getElementById('submit').addEventListener("submit", function(event) {
-        event.preventDefault();
-    })
 
 </script>
 </body>

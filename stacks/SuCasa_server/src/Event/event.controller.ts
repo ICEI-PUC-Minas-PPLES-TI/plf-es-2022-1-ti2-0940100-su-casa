@@ -10,11 +10,13 @@ import { UpadateEventDto } from './dto/update-event.dto';
 export class EventController {
   constructor(private readonly eventService: EventService) {}
 
+  @IsPublic()
   @Post()
   create(@Body() createEventDto: CreateEventDto, @CurrentUser() user: User) {
     return this.eventService.create(createEventDto, user);
   }
 
+  @IsPublic()
   @Post('delete')
   delete(@Body() updateEventDto: UpadateEventDto, @CurrentUser() user: User) {
     return this.eventService.deleteEvent(updateEventDto, user);

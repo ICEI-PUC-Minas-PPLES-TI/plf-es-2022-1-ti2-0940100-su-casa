@@ -27,23 +27,17 @@ export class UserService {
     return this.prisma.user.findUnique({ where: { email } });
   }
 
-  getUserById(id: string) {
-    return this.prisma.user.findUnique({
-      where: { id },
-    });
-  }
-
   async get(user) {
     return user;
   }
 
   async getIdByName(name) {
-    return this.prisma.user.findUnique({ where: { name } });
+    return this.prisma.user.findFirst({ where: { name } });
   }
 
   async getEventos(user: User) {
     if (user.role == 'OWNER') {
-      const residence: Residence = await this.getResidence(user);
+      const residence = await this.getResidence(user);
 
       return await this.prisma.event.findMany({
         where: {
@@ -87,7 +81,7 @@ export class UserService {
 
   async getEvaluation(user: User) {
     if (user.role == 'OWNER') {
-      const residence: Residence = await this.getResidence(user);
+      const residence = await this.getResidence(user);
 
       return await this.prisma.evaluation.findMany({
         where: {

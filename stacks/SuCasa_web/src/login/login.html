@@ -23,7 +23,7 @@
           </div>
           
           <div class="login">
-            <form>
+            <form id="form1">
                   <h2 class="title-login">Login</h2>
                   <label for="email">Email</label>
                   <input type="email" id="email" class="input-padrao" placeholder="seuemail@dominio.com" required>
@@ -33,14 +33,9 @@
 
                   <p>Não possui conta? <a class="link-login" target="_blank" href="../cadastro/cadastro.html">Clique aqui.</a></p>
                 <input type="submit" value="Entrar" class="enviar" id="submit" onclick="login()">
-                   <p id="demo"></p>
+                  <p id="demo"></p>
             </form>
-            <script src="login.js">
-                    document.getElementById("submit").addEventListener("submit", function(event) {
-                    event.preventDefault();
-                })
-
-            </script>
+            <script src="login.js"></script>
           </div>
         </main>
     </body>

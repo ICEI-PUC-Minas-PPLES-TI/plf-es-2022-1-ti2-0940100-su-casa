@@ -14,7 +14,7 @@ export class EvaluationController {
     @Body() createEvaluationDto: CreateEvaluationDto,
     @CurrentUser() user: User,
   ) {
-    return this.evaluationService.evaluation(createEvaluationDto, user.id);
+    return this.evaluationService.evaluation(createEvaluationDto, user);
   }
 
   @IsPublic()

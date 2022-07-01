@@ -9,6 +9,7 @@ import { CurrentUser } from '../auth/decorators/current-user.decorator';
 export class ResidenceController {
   constructor(private readonly residenceService: ResidenceService) {}
 
+  @IsPublic()
   @Post()
   create(
     @Body() createResidenceDto: CreateResidenceDto,

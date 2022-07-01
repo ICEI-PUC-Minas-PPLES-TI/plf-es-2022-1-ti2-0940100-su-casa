@@ -1,4 +1,5 @@
 import { User } from '../../user/entities/user.entity';
+import { BuffetType } from 'prisma';
 
 export class Staff {
   userId: string;
@@ -6,6 +7,6 @@ export class Staff {
   description: string;
   minConvidados: number;
   maxConvidados: number;
-  tipoBuffet: string;
+  tipoBuffet: BuffetType;
   user?: User;
 }

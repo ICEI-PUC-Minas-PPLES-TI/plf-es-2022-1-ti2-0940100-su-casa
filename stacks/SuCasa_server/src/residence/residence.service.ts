@@ -11,17 +11,10 @@ export class ResidenceService {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(createResidenceDto: CreateResidenceDto, user: User) {
-    if (user.role == 'OWNER') {
-      const data = {
-        ...createResidenceDto,
-        ownerId: user.id,
-      };
-
-      const createdResidence = await this.prisma.residence.create({ data });
-
-      return createdResidence;
-    } else {
-      throw new Error('Your account permissions are not alowed');
-    }
+    const data = {
+      ...createResidenceDto,
+      ownerId: user.id,
+    };
+    return await this.prisma.residence.create({ data });
   }
 }

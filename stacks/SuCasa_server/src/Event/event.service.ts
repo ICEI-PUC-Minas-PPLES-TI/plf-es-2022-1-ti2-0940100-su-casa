@@ -17,21 +17,18 @@ export class EventService {
   ) {}
 
   async create(createEventDto: CreateEventDto, user: User) {
-    if (user.role == 'PROMOTER') {
-      const staff = await this.userService.getIdByName(
-        createEventDto.staffName,
-      );
+    const name = createEventDto.staffName;
+    const staff = await this.prisma.user.findFirst({ where: { name } });
+    const email = user.email;
+    const promoter = await this.prisma.user.findUnique({ where: { email } });
 
-      const data = {
-        ...createEventDto,
-        promoterId: user.id,
-        residenceId: 'd6665e1f-0bd8-491b-9eeb-e975ad01c713',
-        staffId: staff.id,
-      };
-      return await this.prisma.event.create({ data });
-    } else {
-      throw new Error('Your account permissions are not allowed');
-    }
+    const data = {
+      ...createEventDto,
+      promoterId: promoter.id,
+      residenceId: 'd6665e1f-0bd8-491b-9eeb-e975ad01c713',
+      staffId: staff.id,
+    };
+    return await this.prisma.event.create({ data });
   }
 
   async deleteEvent(updateEventDto: UpadateEventDto, user: User) {

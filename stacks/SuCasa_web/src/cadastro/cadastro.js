@@ -8,8 +8,8 @@ async function signup() {
     const staff = document.getElementById('radio-staff');
     const promoter = document.getElementById('radio-promoter');
 
-    document.getElementById('submit').addEventListener("submit", function(event) {
-        event.preventDefault();
+    document.getElementById('form1').addEventListener("submit",function(e) {
+        e.preventDefault(); // stop submission
     })
 
     if (conf.value == senha.value) {
@@ -29,6 +29,8 @@ async function signup() {
                  })
              })
             await login(email.value, senha.value, 'OWNER');
+            window.location.pathname = "plf-es-2022-1-ti2-0940100-su-casa/stacks/SuCasa_web/src/paginicial/paginaInicialVisaoAdm.html"
+
         } else if (staff.checked) {
             await fetch('http://localhost:3000/user', {
                 headers: {
@@ -44,7 +46,7 @@ async function signup() {
                     role: 'STAFF'
                 })
             })
-            return window.open('http://localhost:63342/plf-es-2022-1-ti2-0940100-su-casa/stacks/SuCasa_web/src/cadastro/cadastroStaff.html?_ijt=p2tlo80srvoguc9h32820vq1os&_ij_reload=RELOAD_ON_SAVE')
+            window.location.pathname = "plf-es-2022-1-ti2-0940100-su-casa/stacks/SuCasa_web/src/cadastro/cadastroStaff.html"
         } else if (promoter.checked) {
             await fetch('http://localhost:3000/user', {
                 headers: {
@@ -61,11 +63,13 @@ async function signup() {
                 })
             })
             await login(email.value, senha.value, 'PROMOTER');
+            window.location.pathname = "plf-es-2022-1-ti2-0940100-su-casa/stacks/SuCasa_web/src/paginicial/paginaInicialVisaoPromoter.html"
+
         } else {
             throw new Error('Role not checked');
         }
     } else {
-        throw new Error('Password does not match');
+        document.getElementById('demo').innerHTML = 'senha são diferentes';
     }
 }
 
@@ -89,14 +93,4 @@ async function login(email, senha, role) {
             localStorage.setItem('access_token', data.access_token);
             return data;
         })
-
-    // window.location = '';
-    //
-    // if (role == 'OWNER') {
-    //     window.location = 'http://localhost:63342/plf-es-2022-1-ti2-0940100-su-casa/stacks/SuCasa_web/src/paginicial/paginaInicialVisaoAdm.html?_ijt=ea2ltatmjn7trcmf3h91bq1koc&_ij_reload=RELOAD_ON_SAVE';
-    // } else if (role == 'PROMOTER') {
-    //     window.location = 'http://localhost:63342/plf-es-2022-1-ti2-0940100-su-casa/stacks/SuCasa_web/src/paginicial/paginaInicialVisaoPromoter.html?_ijt=4k349tdjb2ddr77h2bac5m88tr&_ij_reload=RELOAD_ON_SAVE';
-    // } else if (role == 'STAFF') {
-    //     window.location = 'http://localhost:63342/plf-es-2022-1-ti2-0940100-su-casa/stacks/SuCasa_web/src/cadastro/cadastroStaff.html?_ijt=shp2usuadg4ab1313u3m97jgp6&_ij_reload=RELOAD_ON_SAVE';
-    // }
 }

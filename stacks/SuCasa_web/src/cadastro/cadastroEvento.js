@@ -7,15 +7,7 @@ function cadastroEvento() {
     const churrasco = document.getElementById("churrasco");
     const buteco = document.getElementById("comida_buteco");
     const sushi = document.getElementById("sushi");
-    
-    var availability = '';
-
-    if (churrasco.checked)
-        availability = availability + 'churrasco,';
-    if (sushi.checked)
-        availability = availability + 'sushi,';
-    if (buteco.checked)
-        availability = availability + 'comida_buteco,';
+    const dateOfEvent = document.getElementById('date');
 
     fetch("http://localhost:3000/Event", {
         headers: {
@@ -24,16 +16,14 @@ function cadastroEvento() {
             'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
         }, method: 'Post',
         body: JSON.stringify({
-          promoterId: '',
-          nome: nome.value,
-          whatsapp: whatsapp.value,
-          numero: numero.value,
-          duracao: duracao.value,
-          servico: servico.value,
-          availability: availability,
-        })  .then(res => {
-            return res.json();
+          numGuests: numero.value,
+          duration: duracao.value,
+          staffName: nome.value,
+          availability: dateOfEvent.value,
+          status: 'agendado'
         })
-        .then(data => console.log(data))
+    }) .then(res => {
+        return res.json();
     })
+        .then(data => console.log(data))
 }

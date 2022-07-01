@@ -1,4 +1,4 @@
-import { Role } from '.prisma/client';
+import { Role } from 'prisma';
 
 export class UserFromJwt {
   id: string;

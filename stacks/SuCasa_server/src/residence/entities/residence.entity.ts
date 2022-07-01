@@ -1,6 +1,7 @@
 export class Residence {
   id?: string;
   ownerId: string;
+  residenceId: string;
   cep: string;
   estado: string;
   cidade: string;

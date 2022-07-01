@@ -9,16 +9,16 @@ datasource db {
 }
 
 model User {
-  id        String     @id @default(uuid())
-  email     String     @unique
-  name      String     @unique
-  password  String
-  phone     String
-  role      Role
-  event     Event[]
-  residence Residence?
-  staff     Staff?
-  evaluation Evaluation?
+  id         String     @id @default(uuid())
+  email      String     @unique
+  name       String     @unique
+  password   String
+  phone      String
+  role       Role
+  event      Event[]
+  residence  Residence?
+  staff      Staff[]
+  evaluation Evaluation[]
 }
 
 model Residence {
@@ -34,7 +34,7 @@ model Residence {
   tamLocal     Int
   numToilet    Int
   availability String
-  ownerId      String
+  ownerId      String      @unique
   price        Int?
   owner        User         @relation(fields: [ownerId], references: [id])
   evaluation   Evaluation[]
@@ -43,13 +43,13 @@ model Residence {
 
 model Staff {
   id            String        @id @default(uuid())
-  userId        String
+  staffId       String
   whatsapp      String?
   minConvidados Int
   maxConvidados Int
   description   String
   tipoBuffet    BuffetType
-  userStaff     User        @relation(fields: [userId], references: [id])
+  staff         User        @relation(fields: [staffId], references: [id])
   event         Event[]
 }
 
